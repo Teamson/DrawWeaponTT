@@ -93,6 +93,8 @@ export default class GameUI extends Laya.Scene {
         SoundMgr.instance.playMusic('bgm.mp3')
 
         AdMgr.instance.hideBanner()
+
+        Laya.timer.frameOnce(1, this, this.initWeaponData)
     }
 
     onClosed() {
@@ -213,7 +215,7 @@ export default class GameUI extends Laya.Scene {
         this.lineArrVec2 = []
         this.lineArrVec2.push(this.startPos)
 
-        
+
     }
     touchMove(event: Laya.Event) {
         if (!this.safeArea(new Laya.Vector2(event.stageX, event.stageY)) || !this.touchStarted) {
@@ -239,6 +241,10 @@ export default class GameUI extends Laya.Scene {
             WxApi.OpenAlert('武器太短啦，请重画！')
             return
         }
+
+        let polyId = this.checkLineInPoly(this.lineArrVec2)
+        console.log('polyId:', polyId)
+
         GameLogic.Share.createLine3D(this.lineArrVec2)
     }
     touchOut(event: Laya.Event) {
@@ -477,4 +483,92 @@ export default class GameUI extends Laya.Scene {
         WxApi.ttEvent('Event_20')
         RecorderMgr.instance.shareVideo()
     }
+
+    //*********神器系统**********/
+    weaponNode: Laya.Sprite = this['weaponNode']
+    polyNode: Laya.Sprite = this['polyNode']
+    weaponPicNode: Laya.Sprite = this['weaponPicNode']
+    weaponTips: Laya.Sprite = this['weaponTips']
+    cmds: Laya.DrawPolyCmd[] = []
+    pointsArr: any[] = []
+    //初始化神器数据
+    initWeaponData() {
+        for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
+            let pic = this.weaponPicNode.getChildAt(i) as Laya.Image
+            pic.visible = i == 0
+        }
+        this.cmds = this.polyNode.graphics.cmds
+        let gPoint = this.polyNode.localToGlobal(new Laya.Point(0, 0))
+        for (let i = 0; i < this.cmds.length; i++) {
+            let points = this.cmds[i].points
+            let arr = []
+            for (let j = 0; j < points.length; j++) {
+                if (j > 0 && j % 2 != 0) {
+                    let pos: Laya.Vector2 = new Laya.Vector2(points[j - 1], points[j])
+                    pos.x += gPoint.x
+                    pos.y += gPoint.y
+                    arr.push(pos)
+                }
+            }
+            this.pointsArr.push(arr)
+        }
+    }
+    //线段是否在多边形内
+    checkLineInPoly(lineArr: Laya.Vector2[]) {
+        let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        for (let i = 0; i < 1/* this.pointsArr.length */; i++) {
+            let posArr: Laya.Vector2[] = this.pointsArr[i]
+            for (let j = 0; j < lineArr.length; j++) {
+                // if (!Utility.pointInPolygon(lineArr[j], posArr)) {
+                //     arr.splice(arr.indexOf(i), 1)
+                //     break
+                // }
+                console.log(lineArr[j].clone())
+                console.log([].concat(posArr))
+                console.log(Utility.pointInPolygon(lineArr[j].clone(), [].concat(posArr)))
+            }
+        }
+
+        if (arr.length <= 0) return -1
+        console.log('111：', arr)
+        //检测是否契合
+        for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
+            if (arr.indexOf(i) == -1) continue
+            let polyPointNode = this.weaponPicNode.getChildAt(i).getChildByName('pointNode') as Laya.Sprite
+            let posArr: Laya.Vector2[] = []
+            for (let j = 0; j < polyPointNode.numChildren; j++) {
+                let p = polyPointNode.getChildAt(j) as Laya.Sprite
+                let gp = polyPointNode.localToGlobal(new Laya.Point(p.x, p.y))
+                posArr.push(new Laya.Vector2(gp.x, gp.y))
+            }
+
+            if (!this.checkPointDistancePoint(posArr, lineArr)) {
+                arr.splice(arr.indexOf(i), 1)
+            }
+        }
+
+        if (arr.length <= 0) return -1
+        console.log('222：', arr)
+        return arr[0]
+    }
+    checkPointDistancePoint(polyArr: Laya.Vector2[], lineArr: Laya.Vector2[]) {
+        for (let i = 0; i < polyArr.length; i++) {
+            let pp: Laya.Vector2 = polyArr[i]
+            let isDis: boolean = false
+            for (let j = 0; j < lineArr.length; j++) {
+                let lp = lineArr[j]
+                let dis = Utility.calcDistance(pp, lp)
+                if (dis < 30) {
+                    isDis = true
+                    break
+                }
+            }
+            if (!isDis) {
+                return false
+            }
+        }
+        return true
+    }
+
+    //*********神器系统**********/
 }
