@@ -35,13 +35,14 @@
             "props":{"y":1050,"x":375,"var":"touchPanel","skin":"mainUI/sy-kz.png","anchorY":0.5,"anchorX":0.5},
             "nodeParent":2,
             "label":"touchPanel",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":15,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image",
                     "props":{"y":0,"x":230,"skin":"mainUI/sy_zt.png","anchorY":0.5,"anchorX":0.5},
@@ -55,6 +56,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "searchKey":"Image,drawTips",
                     "props":{"y":177,"x":230,"var":"drawTips","skin":"mainUI/sy_ck2.png","scaleY":1,"scaleX":1,"anchorY":0.5,"anchorX":0.5},
@@ -69,6 +71,7 @@
                     "$HIDDEN":true
                 },
                 {
+                    "x":30,
                     "type":"Animation",
                     "searchKey":"Animation,fingerAni",
                     "props":{"y":155,"x":230,"var":"fingerAni","source":"MyScenes/FingerAni.ani","autoPlay":true},
@@ -83,18 +86,20 @@
                     "$HIDDEN":true
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite,weaponNode",
                     "props":{"y":0,"x":0,"width":0,"var":"weaponNode","height":0},
                     "nodeParent":15,
                     "label":"weaponNode",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":141,
                     "child":[
                         {
+                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite,polyNode",
                             "props":{"y":0,"x":0,"width":0,"var":"polyNode","height":0},
@@ -110,7 +115,7 @@
                                     "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p1",
-                                    "props":{"y":23,"x":22,"points":"0,231,62,194,38,155,68,139,90,179,399,-1,414,27,107,206,129,245,100,261,78,223,16,258","name":"p1","lineWidth":1,"lineColor":"#ff0400"},
+                                    "props":{"y":23,"x":22,"points":"0,231,62,194,38,155,68,139,90,179,399,-1,414,27,107,206,129,245,100,261,78,223,16,258","name":"p1","lineWidth":1},
                                     "nodeParent":145,
                                     "label":"p1",
                                     "isDirectory":false,
@@ -243,21 +248,23 @@
                                 }]
                         },
                         {
+                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite,weaponPicNode",
                             "props":{"y":0,"x":0,"var":"weaponPicNode"},
                             "nodeParent":141,
                             "label":"weaponPicNode",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
                             "compId":146,
                             "child":[
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly1",
-                                    "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx1.png","name":"poly1","anchorY":0.5,"anchorX":0.5},
+                                    "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx1.png","name":"poly1","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly1",
                                     "isOpen":false,
@@ -409,12 +416,13 @@
                                                         ]
                                                 }]
                                         }],
-                                    "$HIDDEN":true
+                                    "$HIDDEN":false
                                 },
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly2",
-                                    "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx2.png","name":"poly2","anchorY":0.5,"anchorX":0.5},
+                                    "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx2.png","name":"poly2","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly2",
                                     "isOpen":false,
@@ -569,9 +577,10 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly3",
-                                    "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx3.png","name":"poly3","anchorY":0.5,"anchorX":0.5},
+                                    "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx3.png","name":"poly3","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly3",
                                     "isOpen":false,
@@ -700,9 +709,10 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly4",
-                                    "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx4.png","name":"poly4","anchorY":0.5,"anchorX":0.5},
+                                    "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx4.png","name":"poly4","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly4",
                                     "isOpen":false,
@@ -818,9 +828,10 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly5",
-                                    "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx5.png","name":"poly5","anchorY":0.5,"anchorX":0.5},
+                                    "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx5.png","name":"poly5","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly5",
                                     "isOpen":false,
@@ -910,9 +921,10 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly6",
-                                    "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx6.png","name":"poly6","anchorY":0.5,"anchorX":0.5},
+                                    "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx6.png","name":"poly6","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly6",
                                     "isOpen":false,
@@ -1002,9 +1014,10 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly7",
-                                    "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx7.png","name":"poly7","anchorY":0.5,"anchorX":0.5},
+                                    "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx7.png","name":"poly7","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly7",
                                     "isOpen":false,
@@ -1120,9 +1133,10 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly8",
-                                    "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx8.png","name":"poly8","anchorY":0.5,"anchorX":0.5},
+                                    "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx8.png","name":"poly8","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly8",
                                     "isOpen":false,
@@ -1225,9 +1239,10 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly9",
-                                    "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx9.png","name":"poly9","anchorY":0.5,"anchorX":0.5},
+                                    "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx9.png","name":"poly9","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly9",
                                     "isOpen":false,
@@ -1305,6 +1320,7 @@
                                 }]
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,weaponTips",
                             "props":{"y":340,"x":230,"var":"weaponTips","skin":"weaponRes/sq_zt1.png","anchorY":0.5,"anchorX":0.5},

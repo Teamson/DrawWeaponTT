@@ -111,6 +111,13 @@ export default class Player extends Laya.Script {
         }
     }
 
+    //添加神器
+    addGodWeapon(id: number) {
+        let weaponRes: Laya.Sprite3D = Laya.loader.getRes(WxApi.UnityPath + 'H_Arms_' + (id + 1) + '.lh') as Laya.Sprite3D
+        let weapon: Laya.Sprite3D = Laya.Sprite3D.instantiate(weaponRes, null, true, new Laya.Vector3(0, 0, 0));
+        this.addWeapon(weapon)
+    }
+
     //添加武器
     addWeapon(weapon: Laya.Sprite3D) {
         this.weaponNode.addChild(weapon)

@@ -1391,7 +1391,12 @@
             }
             let polyId = this.checkLineInPoly(this.lineArrVec2);
             console.log('polyId:', polyId);
-            GameLogic.Share.createLine3D(this.lineArrVec2);
+            if (polyId != -1) {
+                GameLogic.Share.createGodWeapon(polyId);
+            }
+            else {
+                GameLogic.Share.createLine3D(this.lineArrVec2);
+            }
         }
         touchOut(event) {
             if (!this.touchStarted) {
@@ -1403,7 +1408,14 @@
                 WxApi.OpenAlert('武器太短啦，请重画！');
                 return;
             }
-            GameLogic.Share.createLine3D(this.lineArrVec2);
+            let polyId = this.checkLineInPoly(this.lineArrVec2);
+            console.log('polyId:', polyId);
+            if (polyId != -1) {
+                GameLogic.Share.createGodWeapon(polyId);
+            }
+            else {
+                GameLogic.Share.createLine3D(this.lineArrVec2);
+            }
         }
         drawLine() {
             this.drawSp.graphics.clear();
@@ -1590,7 +1602,7 @@
         initWeaponData() {
             for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
                 let pic = this.weaponPicNode.getChildAt(i);
-                pic.visible = i == 0;
+                pic.visible = i == 1;
             }
             this.cmds = this.polyNode.graphics.cmds;
             let gPoint = this.polyNode.localToGlobal(new Laya.Point(0, 0));
@@ -1600,8 +1612,8 @@
                 for (let j = 0; j < points.length; j++) {
                     if (j > 0 && j % 2 != 0) {
                         let pos = new Laya.Vector2(points[j - 1], points[j]);
-                        pos.x += gPoint.x;
-                        pos.y += gPoint.y;
+                        pos.x += gPoint.x + 22;
+                        pos.y += gPoint.y + 23;
                         arr.push(pos);
                     }
                 }
@@ -1610,17 +1622,17 @@
         }
         checkLineInPoly(lineArr) {
             let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-            for (let i = 0; i < 1; i++) {
+            for (let i = 0; i < this.pointsArr.length; i++) {
                 let posArr = this.pointsArr[i];
                 for (let j = 0; j < lineArr.length; j++) {
-                    console.log(lineArr[j].clone());
-                    console.log([].concat(posArr));
-                    console.log(Utility.pointInPolygon(lineArr[j].clone(), [].concat(posArr)));
+                    if (!Utility.pointInPolygon(lineArr[j], posArr)) {
+                        arr.splice(arr.indexOf(i), 1);
+                        break;
+                    }
                 }
             }
             if (arr.length <= 0)
                 return -1;
-            console.log('111：', arr);
             for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
                 if (arr.indexOf(i) == -1)
                     continue;
@@ -1637,7 +1649,6 @@
             }
             if (arr.length <= 0)
                 return -1;
-            console.log('222：', arr);
             return arr[0];
         }
         checkPointDistancePoint(polyArr, lineArr) {
@@ -1747,6 +1758,11 @@
             else {
                 return this.backDistance;
             }
+        }
+        addGodWeapon(id) {
+            let weaponRes = Laya.loader.getRes(WxApi.UnityPath + 'H_Arms_' + (id + 1) + '.lh');
+            let weapon = Laya.Sprite3D.instantiate(weaponRes, null, true, new Laya.Vector3(0, 0, 0));
+            this.addWeapon(weapon);
         }
         addWeapon(weapon) {
             this.weaponNode.addChild(weapon);
@@ -2029,6 +2045,7 @@
             this.gradeIndex = 0;
             this.tempPlayerCount = 0;
             this.getCoinNum = 0;
+            localStorage.clear();
             AdMgr.instance.initAd();
             RecorderMgr.instance.initRecorder();
             Utility.loadJson('res/config/aiConfig.json', (data) => {
@@ -2226,6 +2243,18 @@
             player.transform.localPosition.y = 0;
             player.transform.localPosition.z = 0;
             player.transform.rotate(new Laya.Vector3(0, 180, 0), true, false);
+        }
+        createGodWeapon(id) {
+            for (let i = 0; i < this._playerNode.numChildren; i++) {
+                let pCrl = this._playerNode.getChildAt(i).getComponent(Player);
+                if (!pCrl.haveWeapon) {
+                    pCrl.addGodWeapon(id);
+                    break;
+                }
+            }
+            if (this.checkWeaponed()) {
+                this.readyGo();
+            }
         }
         createLine3D(lineArr) {
             let lineNode = new Laya.Sprite3D();

@@ -2,7 +2,7 @@
 	"version":"LAYAHIERARCHY:02",
 	"data":{
 		"type":"MeshSprite3D",
-		"instanceID":19,
+		"instanceID":27,
 		"props":{
 			"name":"H_Arms_8",
 			"active":true,
@@ -20,8 +20,8 @@
 				-0.7071068
 			],
 			"scale":[
-				1,
-				1,
+				0.5,
+				0.5,
 				1
 			],
 			"meshPath":"Assets/FBX/H_Arms_8-H_Arms_8.lm",
@@ -36,7 +36,7 @@
 		"child":[
 			{
 				"type":"Sprite3D",
-				"instanceID":20,
+				"instanceID":28,
 				"props":{
 					"name":"GameObject",
 					"active":true,
@@ -60,11 +60,100 @@
 					]
 				},
 				"components":[],
-				"child":[]
+				"child":[
+					{
+						"type":"TrailSprite3D",
+						"instanceID":29,
+						"props":{
+							"name":"Trail",
+							"active":true,
+							"isStatic":false,
+							"layer":0,
+							"position":[
+								0,
+								-0.605,
+								-0.138
+							],
+							"rotation":[
+								0,
+								0,
+								0,
+								-1
+							],
+							"scale":[
+								2,
+								2,
+								1
+							],
+							"time":0.1,
+							"minVertexDistance":0.1,
+							"widthMultiplier":0.65,
+							"textureMode":0,
+							"widthCurve":[
+								{
+									"time":0,
+									"inTangent":0,
+									"outTangent":0,
+									"value":1
+								},
+								{
+									"time":1,
+									"inTangent":0,
+									"outTangent":0,
+									"value":1
+								}
+							],
+							"colorGradient":{
+								"mode":0,
+								"colorKeys":[
+									{
+										"time":0,
+										"value":[
+											1,
+											1,
+											1
+										]
+									},
+									{
+										"time":1,
+										"value":[
+											0.509434,
+											0.509434,
+											0.509434
+										]
+									}
+								],
+								"alphaKeys":[
+									{
+										"time":0,
+										"value":1
+									},
+									{
+										"time":0.3353018,
+										"value":1
+									},
+									{
+										"time":1,
+										"value":0
+									}
+								]
+							},
+							"alignment":1,
+							"materials":[
+								{
+									"type":"Laya.TrailMaterial",
+									"path":"Resources/unity_builtin_extra.lmat"
+								}
+							]
+						},
+						"components":[],
+						"child":[]
+					}
+				]
 			},
 			{
 				"type":"Sprite3D",
-				"instanceID":21,
+				"instanceID":30,
 				"props":{
 					"name":"GameObject (1)",
 					"active":true,
@@ -92,7 +181,7 @@
 			},
 			{
 				"type":"Sprite3D",
-				"instanceID":22,
+				"instanceID":31,
 				"props":{
 					"name":"GameObject (2)",
 					"active":true,

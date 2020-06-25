@@ -1,0 +1,10 @@
+{
+  "code": "import RecorderMgr from \"../Mod/RecorderMgr\";\r\nimport PlayerDataMgr from \"../Libs/PlayerDataMgr\";\r\nimport Utility from \"../Mod/Utility\";\r\nimport GameLogic from \"../Crl/GameLogic\";\r\nimport WxApi from \"../Libs/WxApi\";\r\nexport default class ExtractUI extends Laya.Scene {\r\n    constructor() {\r\n        super();\r\n        this.heroSkin = this['heroSkin'];\r\n        this.shareBtn = this['shareBtn'];\r\n        this.noBtn = this['noBtn'];\r\n        this.skinId = -1;\r\n    }\r\n    onOpened() {\r\n        this.shareBtn.on(Laya.Event.CLICK, this, this.shareBtnCB);\r\n        this.noBtn.on(Laya.Event.CLICK, this, this.noBtnCB);\r\n        let sArr = PlayerDataMgr.getFreeSkins();\r\n        this.skinId = Utility.getRandomItemInArr(sArr);\r\n        this.heroSkin.skin = 'freeSkins/HeroD_' + (this.skinId + 1) + '.png';\r\n        Utility.visibleDelay(this.noBtn, 2000);\r\n    }\r\n    onClosed() {\r\n    }\r\n    shareBtnCB() {\r\n        let cb = () => {\r\n            WxApi.ExtractUIGapGrade = 3;\r\n            PlayerDataMgr.getPlayerSkin(PlayerDataMgr.getPlayerArrIndexByValue(this.skinId), this.skinId);\r\n            GameLogic.Share.changePlayerSkin();\r\n            this.noBtnCB();\r\n        };\r\n        RecorderMgr.instance.shareVideo(cb);\r\n    }\r\n    noBtnCB() {\r\n        this.close();\r\n    }\r\n}\r\n",
+  "references": [
+    "E:/GitProjects/DrawWeaponTT/src/Mod/RecorderMgr.ts",
+    "E:/GitProjects/DrawWeaponTT/src/Libs/PlayerDataMgr.ts",
+    "E:/GitProjects/DrawWeaponTT/src/Mod/Utility.ts",
+    "E:/GitProjects/DrawWeaponTT/src/Crl/GameLogic.ts",
+    "E:/GitProjects/DrawWeaponTT/src/Libs/WxApi.ts"
+  ]
+}

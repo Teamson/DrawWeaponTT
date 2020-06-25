@@ -2,7 +2,7 @@
 	"version":"LAYAHIERARCHY:02",
 	"data":{
 		"type":"MeshSprite3D",
-		"instanceID":3,
+		"instanceID":4,
 		"props":{
 			"name":"H_Arms_2",
 			"active":true,
@@ -36,7 +36,7 @@
 		"child":[
 			{
 				"type":"Sprite3D",
-				"instanceID":4,
+				"instanceID":5,
 				"props":{
 					"name":"GameObject",
 					"active":true,
@@ -60,11 +60,180 @@
 					]
 				},
 				"components":[],
-				"child":[]
+				"child":[
+					{
+						"type":"TrailSprite3D",
+						"instanceID":6,
+						"props":{
+							"name":"Trail",
+							"active":true,
+							"isStatic":false,
+							"layer":0,
+							"position":[
+								-0.199,
+								1.208,
+								0
+							],
+							"rotation":[
+								0,
+								0,
+								0,
+								-1
+							],
+							"scale":[
+								1,
+								1,
+								1
+							],
+							"time":0.2,
+							"minVertexDistance":0,
+							"widthMultiplier":1,
+							"textureMode":0,
+							"widthCurve":[
+								{
+									"time":0,
+									"inTangent":-0.04117436,
+									"outTangent":-0.04117436,
+									"value":0.05607476
+								},
+								{
+									"time":1,
+									"inTangent":-0.3069319,
+									"outTangent":-0.3069319,
+									"value":0.009338379
+								}
+							],
+							"colorGradient":{
+								"mode":0,
+								"colorKeys":[
+									{
+										"time":0,
+										"value":[
+											0.6901961,
+											0.9568628,
+											0.3960785
+										]
+									},
+									{
+										"time":1,
+										"value":[
+											0.5960785,
+											0.8470589,
+											0.3098039
+										]
+									}
+								],
+								"alphaKeys":[
+									{
+										"time":0,
+										"value":1
+									},
+									{
+										"time":1,
+										"value":0
+									}
+								]
+							},
+							"alignment":0,
+							"materials":[
+								{
+									"type":"Laya.TrailMaterial",
+									"path":"Resources/unity_builtin_extra.lmat"
+								}
+							]
+						},
+						"components":[],
+						"child":[]
+					},
+					{
+						"type":"TrailSprite3D",
+						"instanceID":7,
+						"props":{
+							"name":"Trail (1)",
+							"active":true,
+							"isStatic":false,
+							"layer":0,
+							"position":[
+								-0.199,
+								-1.132001,
+								0
+							],
+							"rotation":[
+								0,
+								0,
+								0,
+								-1
+							],
+							"scale":[
+								1,
+								1,
+								1
+							],
+							"time":0.2,
+							"minVertexDistance":0,
+							"widthMultiplier":1,
+							"textureMode":0,
+							"widthCurve":[
+								{
+									"time":0,
+									"inTangent":-0.04117436,
+									"outTangent":-0.04117436,
+									"value":0.05607476
+								},
+								{
+									"time":1,
+									"inTangent":-0.3069319,
+									"outTangent":-0.3069319,
+									"value":0.009338379
+								}
+							],
+							"colorGradient":{
+								"mode":0,
+								"colorKeys":[
+									{
+										"time":0,
+										"value":[
+											0.6901961,
+											0.9568628,
+											0.3960785
+										]
+									},
+									{
+										"time":1,
+										"value":[
+											0.5960785,
+											0.8470589,
+											0.3098039
+										]
+									}
+								],
+								"alphaKeys":[
+									{
+										"time":0,
+										"value":1
+									},
+									{
+										"time":1,
+										"value":0
+									}
+								]
+							},
+							"alignment":0,
+							"materials":[
+								{
+									"type":"Laya.TrailMaterial",
+									"path":"Resources/unity_builtin_extra.lmat"
+								}
+							]
+						},
+						"components":[],
+						"child":[]
+					}
+				]
 			},
 			{
 				"type":"Sprite3D",
-				"instanceID":5,
+				"instanceID":8,
 				"props":{
 					"name":"GameObject (1)",
 					"active":true,

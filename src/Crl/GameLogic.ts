@@ -42,7 +42,7 @@ export default class GameLogic {
     public getCoinNum: number = 0
 
     constructor() {
-        //localStorage.clear()
+        localStorage.clear()
         //初始化广告
         AdMgr.instance.initAd()
         //初始化录屏
@@ -273,6 +273,21 @@ export default class GameLogic {
         player.transform.localPosition.y = 0
         player.transform.localPosition.z = 0
         player.transform.rotate(new Laya.Vector3(0, 180, 0), true, false)
+    }
+
+    createGodWeapon(id: number) {
+        //添加武器到人物
+        for (let i = 0; i < this._playerNode.numChildren; i++) {
+            let pCrl = this._playerNode.getChildAt(i).getComponent(Player) as Player
+            if (!pCrl.haveWeapon) {
+                pCrl.addGodWeapon(id)
+                break
+            }
+        }
+
+        if (this.checkWeaponed()) {
+            this.readyGo()
+        }
     }
 
     createLine3D(lineArr: Laya.Vector2[]) {

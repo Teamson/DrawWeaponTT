@@ -245,7 +245,11 @@ export default class GameUI extends Laya.Scene {
         let polyId = this.checkLineInPoly(this.lineArrVec2)
         console.log('polyId:', polyId)
 
-        GameLogic.Share.createLine3D(this.lineArrVec2)
+        if (polyId != -1) {
+            GameLogic.Share.createGodWeapon(polyId)
+        } else {
+            GameLogic.Share.createLine3D(this.lineArrVec2)
+        }
     }
     touchOut(event: Laya.Event) {
         if (!this.touchStarted) {
@@ -257,7 +261,15 @@ export default class GameUI extends Laya.Scene {
             WxApi.OpenAlert('武器太短啦，请重画！')
             return
         }
-        GameLogic.Share.createLine3D(this.lineArrVec2)
+
+        let polyId = this.checkLineInPoly(this.lineArrVec2)
+        console.log('polyId:', polyId)
+
+        if (polyId != -1) {
+            GameLogic.Share.createGodWeapon(polyId)
+        } else {
+            GameLogic.Share.createLine3D(this.lineArrVec2)
+        }
     }
 
     drawLine() {
@@ -495,7 +507,7 @@ export default class GameUI extends Laya.Scene {
     initWeaponData() {
         for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
             let pic = this.weaponPicNode.getChildAt(i) as Laya.Image
-            pic.visible = i == 0
+            pic.visible = i == 1
         }
         this.cmds = this.polyNode.graphics.cmds
         let gPoint = this.polyNode.localToGlobal(new Laya.Point(0, 0))
@@ -505,8 +517,8 @@ export default class GameUI extends Laya.Scene {
             for (let j = 0; j < points.length; j++) {
                 if (j > 0 && j % 2 != 0) {
                     let pos: Laya.Vector2 = new Laya.Vector2(points[j - 1], points[j])
-                    pos.x += gPoint.x
-                    pos.y += gPoint.y
+                    pos.x += gPoint.x + 22
+                    pos.y += gPoint.y + 23
                     arr.push(pos)
                 }
             }
@@ -516,21 +528,17 @@ export default class GameUI extends Laya.Scene {
     //线段是否在多边形内
     checkLineInPoly(lineArr: Laya.Vector2[]) {
         let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-        for (let i = 0; i < 1/* this.pointsArr.length */; i++) {
+        for (let i = 0; i < this.pointsArr.length; i++) {
             let posArr: Laya.Vector2[] = this.pointsArr[i]
             for (let j = 0; j < lineArr.length; j++) {
-                // if (!Utility.pointInPolygon(lineArr[j], posArr)) {
-                //     arr.splice(arr.indexOf(i), 1)
-                //     break
-                // }
-                console.log(lineArr[j].clone())
-                console.log([].concat(posArr))
-                console.log(Utility.pointInPolygon(lineArr[j].clone(), [].concat(posArr)))
+                if (!Utility.pointInPolygon(lineArr[j], posArr)) {
+                    arr.splice(arr.indexOf(i), 1)
+                    break
+                }
             }
         }
 
         if (arr.length <= 0) return -1
-        console.log('111：', arr)
         //检测是否契合
         for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
             if (arr.indexOf(i) == -1) continue
@@ -548,7 +556,6 @@ export default class GameUI extends Laya.Scene {
         }
 
         if (arr.length <= 0) return -1
-        console.log('222：', arr)
         return arr[0]
     }
     checkPointDistancePoint(polyArr: Laya.Vector2[], lineArr: Laya.Vector2[]) {

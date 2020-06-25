@@ -2,7 +2,7 @@
 	"version":"LAYAHIERARCHY:02",
 	"data":{
 		"type":"MeshSprite3D",
-		"instanceID":9,
+		"instanceID":13,
 		"props":{
 			"name":"H_Arms_4",
 			"active":true,
@@ -36,7 +36,7 @@
 		"child":[
 			{
 				"type":"Sprite3D",
-				"instanceID":10,
+				"instanceID":14,
 				"props":{
 					"name":"GameObject",
 					"active":true,
@@ -60,11 +60,190 @@
 					]
 				},
 				"components":[],
-				"child":[]
+				"child":[
+					{
+						"type":"ShuriKenParticle3D",
+						"instanceID":15,
+						"props":{
+							"name":"Particle System",
+							"active":true,
+							"isStatic":false,
+							"layer":0,
+							"position":[
+								0,
+								-0.169,
+								0
+							],
+							"rotation":[
+								-0.5000001,
+								0.5,
+								0.5,
+								-0.5
+							],
+							"scale":[
+								1,
+								1,
+								1
+							],
+							"main":{
+								"randomSeed":4.293279E+08,
+								"bases":{
+									"isPerformanceMode":true,
+									"startLifetimeConstant":1,
+									"startLifetimeConstantMax":1,
+									"startSpeedConstant":0,
+									"startSpeedConstantMax":0,
+									"maxParticles":1000
+								},
+								"vector3s":{
+									"startRotationConstantSeparate":[
+										0,
+										-1.570796,
+										0
+									],
+									"startRotationConstantMaxSeparate":[
+										0,
+										-1.570796,
+										0
+									]
+								}
+							},
+							"emission":{
+								"bases":{
+									"enable":true
+								}
+							},
+							"shape":{
+								"shapeType":3,
+								"bases":{
+									"enable":true,
+									"x":1.492008,
+									"y":0.2,
+									"z":0.06454134
+								}
+							},
+							"colorOverLifetime":{
+								"bases":{
+									"enable":true
+								},
+								"color":{
+									"type":1,
+									"gradient":{
+										"alphas":[
+											{
+												"key":0,
+												"value":1
+											},
+											{
+												"key":0.3852903,
+												"value":1
+											},
+											{
+												"key":1,
+												"value":0
+											}
+										],
+										"rgbs":[
+											{
+												"key":0,
+												"value":[
+													1,
+													0,
+													0.01827145
+												]
+											},
+											{
+												"key":0.1029374,
+												"value":[
+													1,
+													0.06662896,
+													0.01639056
+												]
+											},
+											{
+												"key":0.5176471,
+												"value":[
+													1,
+													0.07614981,
+													0.0161218
+												]
+											},
+											{
+												"key":1,
+												"value":[
+													1,
+													0.6472527,
+													0
+												]
+											}
+										]
+									},
+									"gradientMax":{
+										"alphas":[
+											{
+												"key":0,
+												"value":1
+											},
+											{
+												"key":0.3852903,
+												"value":1
+											},
+											{
+												"key":1,
+												"value":0
+											}
+										],
+										"rgbs":[
+											{
+												"key":0,
+												"value":[
+													1,
+													0,
+													0.01827145
+												]
+											},
+											{
+												"key":0.1029374,
+												"value":[
+													1,
+													0.06662896,
+													0.01639056
+												]
+											},
+											{
+												"key":0.5176471,
+												"value":[
+													1,
+													0.07614981,
+													0.0161218
+												]
+											},
+											{
+												"key":1,
+												"value":[
+													1,
+													0.6472527,
+													0
+												]
+											}
+										]
+									}
+								}
+							},
+							"renderer":{
+								"resources":{
+									"material":"Assets/FX/magic_line 1.lmat"
+								}
+							}
+						},
+						"components":[],
+						"child":[]
+					}
+				]
 			},
 			{
 				"type":"Sprite3D",
-				"instanceID":11,
+				"instanceID":16,
 				"props":{
 					"name":"GameObject (1)",
 					"active":true,

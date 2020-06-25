@@ -2,7 +2,7 @@
 	"version":"LAYAHIERARCHY:02",
 	"data":{
 		"type":"MeshSprite3D",
-		"instanceID":14,
+		"instanceID":20,
 		"props":{
 			"name":"H_Arms_6",
 			"active":true,
@@ -36,7 +36,7 @@
 		"child":[
 			{
 				"type":"Sprite3D",
-				"instanceID":15,
+				"instanceID":21,
 				"props":{
 					"name":"GameObject",
 					"active":true,
@@ -60,11 +60,100 @@
 					]
 				},
 				"components":[],
-				"child":[]
+				"child":[
+					{
+						"type":"TrailSprite3D",
+						"instanceID":22,
+						"props":{
+							"name":"Trail",
+							"active":true,
+							"isStatic":false,
+							"layer":0,
+							"position":[
+								0,
+								-0.231,
+								0
+							],
+							"rotation":[
+								0,
+								0,
+								0,
+								-1
+							],
+							"scale":[
+								1,
+								1,
+								1
+							],
+							"time":0.1,
+							"minVertexDistance":0.1,
+							"widthMultiplier":1.7,
+							"textureMode":0,
+							"widthCurve":[
+								{
+									"time":0,
+									"inTangent":0,
+									"outTangent":0,
+									"value":1
+								},
+								{
+									"time":1,
+									"inTangent":0,
+									"outTangent":0,
+									"value":1
+								}
+							],
+							"colorGradient":{
+								"mode":0,
+								"colorKeys":[
+									{
+										"time":0,
+										"value":[
+											1,
+											0.3764706,
+											0.3294118
+										]
+									},
+									{
+										"time":1,
+										"value":[
+											0.509434,
+											0.509434,
+											0.509434
+										]
+									}
+								],
+								"alphaKeys":[
+									{
+										"time":0,
+										"value":1
+									},
+									{
+										"time":0.3353018,
+										"value":1
+									},
+									{
+										"time":1,
+										"value":0
+									}
+								]
+							},
+							"alignment":0,
+							"materials":[
+								{
+									"type":"Laya.TrailMaterial",
+									"path":"Resources/unity_builtin_extra.lmat"
+								}
+							]
+						},
+						"components":[],
+						"child":[]
+					}
+				]
 			},
 			{
 				"type":"Sprite3D",
-				"instanceID":16,
+				"instanceID":23,
 				"props":{
 					"name":"GameObject (1)",
 					"active":true,
