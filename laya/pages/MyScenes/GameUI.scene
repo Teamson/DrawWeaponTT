@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"Scene",
-    "selectedBox":2,
-    "selecteID":164,
+    "selectedBox":145,
+    "selecteID":143,
     "searchKey":"Scene",
     "props":{"width":750,"sceneColor":"#36eeff","runtime":"View/GameUI.ts","height":1624},
     "nodeParent":-1,
-    "maxID":166,
+    "maxID":243,
     "label":"Scene",
     "isOpen":true,
     "isDirectory":true,
@@ -85,7 +85,7 @@
                 {
                     "type":"Sprite",
                     "searchKey":"Sprite,weaponNode",
-                    "props":{"y":0,"x":0,"var":"weaponNode"},
+                    "props":{"y":0,"x":0,"width":0,"var":"weaponNode","height":0},
                     "nodeParent":15,
                     "label":"weaponNode",
                     "isOpen":false,
@@ -97,19 +97,20 @@
                         {
                             "type":"Sprite",
                             "searchKey":"Sprite,polyNode",
-                            "props":{"y":0,"x":0,"var":"polyNode"},
+                            "props":{"y":0,"x":0,"width":0,"var":"polyNode","height":0},
                             "nodeParent":141,
                             "label":"polyNode",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
                             "compId":145,
                             "child":[
                                 {
+                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p1",
-                                    "props":{"y":23,"x":22,"points":"0,231,62,194,38,155,68,139,90,179,399,-1,414,27,107,206,129,245,100,261,78,223,16,258","name":"p1","lineWidth":1},
+                                    "props":{"y":23,"x":22,"points":"0,231,62,194,38,155,68,139,90,179,399,-1,414,27,107,206,129,245,100,261,78,223,16,258","name":"p1","lineWidth":1,"lineColor":"#ff0400"},
                                     "nodeParent":145,
                                     "label":"p1",
                                     "isDirectory":false,
@@ -121,6 +122,7 @@
                                     "$HIDDEN":false
                                 },
                                 {
+                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p2",
                                     "props":{"y":23,"x":22,"points":"334,263,84,262,83,230,283,53,83,53,81,20,336,20,336,53,137,230,334,231","name":"p2","lineWidth":1},
@@ -135,6 +137,7 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p3",
                                     "props":{"y":23,"x":22,"points":"319,47,31,215,17,186,329,5,379,91,65,273,49,245,336,78","name":"p3","lineWidth":1},
@@ -149,6 +152,7 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p4",
                                     "props":{"y":23,"x":22,"points":"313,51,46,273,26,247,317,6,345,38,392,91,313,200,230,216,224,185,296,169,351,92","name":"p4","lineWidth":1},
@@ -163,6 +167,7 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p5",
                                     "props":{"y":23,"x":22,"points":"287,199,256,200,211,69,168,196,224,197,224,270,192,270,192,230,133,230,131,196,194,19,227,19","name":"p5","lineWidth":1},
@@ -177,6 +182,7 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p6",
                                     "props":{"y":23,"x":22,"points":"225,38,227,121,310,120,309,155,227,155,226,239,192,239,192,155,108,154,109,122,192,121,192,38","name":"p6","lineWidth":1},
@@ -191,6 +197,7 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p7",
                                     "props":{"y":23,"x":22,"points":"277,118,276,66,142,67,141,120,225,119,225,248,192,247,192,152,109,151,109,32,310,34,309,152,239,153,239,121","name":"p7","lineWidth":1},
@@ -205,6 +212,7 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p8",
                                     "props":{"y":23,"x":22,"points":"226,265,193,266,193,179,165,167,137,134,127,96,143,52,175,24,210,17,258,31,285,66,291,102,282,139,255,166,226,178","name":"p8","lineWidth":1},
@@ -219,6 +227,7 @@
                                     "$HIDDEN":true
                                 },
                                 {
+                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p9",
                                     "props":{"y":23,"x":22,"points":"282,157,200,262,175,243,239,156,135,157,136,123,220,18,244,38,179,125,281,124","name":"p9","lineWidth":1},
@@ -251,14 +260,156 @@
                                     "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx1.png","name":"poly1","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly1",
-                                    "isOpen":true,
-                                    "isDirectory":false,
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
+                                    "hasChild":true,
                                     "compId":142,
                                     "child":[
-                                        ],
-                                    "$HIDDEN":false
+                                        {
+                                            "type":"Sprite",
+                                            "searchKey":"Sprite,pointNode",
+                                            "props":{"name":"pointNode"},
+                                            "nodeParent":142,
+                                            "label":"pointNode",
+                                            "isOpen":true,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":164,
+                                            "child":[
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":235,"x":25,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":165,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":219,"x":58,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":166,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":203,"x":85,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":167,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":168,"x":66,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":168,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":240.5,"x":107.5,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":169,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":168,"x":141,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":170,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":129.75,"x":206,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":171,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":95,"x":272,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":172,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":61,"x":333,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":173,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":29,"x":384,"name":"p"},
+                                                    "nodeParent":164,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":174,
+                                                    "child":[
+                                                        ]
+                                                }]
+                                        }],
+                                    "$HIDDEN":true
                                 },
                                 {
                                     "type":"Image",
@@ -266,13 +417,155 @@
                                     "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx2.png","name":"poly2","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly2",
-                                    "isOpen":true,
-                                    "isDirectory":false,
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
+                                    "hasChild":true,
                                     "compId":147,
                                     "child":[
-                                        ],
+                                        {
+                                            "type":"Sprite",
+                                            "searchKey":"Sprite,pointNode",
+                                            "props":{"y":0,"x":0,"name":"pointNode"},
+                                            "nodeParent":147,
+                                            "label":"pointNode",
+                                            "isOpen":false,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":175,
+                                            "child":[
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":37,"x":101,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":176,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":37,"x":157,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":177,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":37,"x":222,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":178,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":37,"x":309,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":179,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":92,"x":272,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":180,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":141,"x":206,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":181,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":192,"x":149,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":182,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":246,"x":109,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":183,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":246,"x":214,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":184,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":246,"x":309,"name":"p"},
+                                                    "nodeParent":175,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":185,
+                                                    "child":[
+                                                        ]
+                                                }]
+                                        }],
                                     "$HIDDEN":true
                                 },
                                 {
@@ -281,13 +574,129 @@
                                     "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx3.png","name":"poly3","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly3",
-                                    "isOpen":true,
-                                    "isDirectory":false,
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
+                                    "hasChild":true,
                                     "compId":148,
                                     "child":[
-                                        ],
+                                        {
+                                            "type":"Sprite",
+                                            "searchKey":"Sprite,pointNode",
+                                            "props":{"y":0,"x":0,"name":"pointNode"},
+                                            "nodeParent":148,
+                                            "label":"pointNode",
+                                            "isOpen":false,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":186,
+                                            "child":[
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":192,"x":38,"name":"p"},
+                                                    "nodeParent":186,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":187,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":141,"x":125,"name":"p"},
+                                                    "nodeParent":186,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":188,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":84,"x":222,"name":"p"},
+                                                    "nodeParent":186,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":189,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":26,"x":322,"name":"p"},
+                                                    "nodeParent":186,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":190,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":84,"x":356,"name":"p"},
+                                                    "nodeParent":186,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":191,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":141,"x":258,"name":"p"},
+                                                    "nodeParent":186,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":192,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":200,"x":158,"name":"p"},
+                                                    "nodeParent":186,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":193,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":248,"x":71,"name":"p"},
+                                                    "nodeParent":186,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":194,
+                                                    "child":[
+                                                        ]
+                                                }]
+                                        }],
                                     "$HIDDEN":true
                                 },
                                 {
@@ -296,13 +705,116 @@
                                     "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx4.png","name":"poly4","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly4",
-                                    "isOpen":true,
-                                    "isDirectory":false,
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
+                                    "hasChild":true,
                                     "compId":149,
                                     "child":[
-                                        ],
+                                        {
+                                            "type":"Sprite",
+                                            "searchKey":"Sprite,pointNode",
+                                            "props":{"y":0,"x":0,"name":"pointNode"},
+                                            "nodeParent":149,
+                                            "label":"pointNode",
+                                            "isOpen":false,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":197,
+                                            "child":[
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":248,"x":45,"name":"p"},
+                                                    "nodeParent":197,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":198,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":184,"x":126,"name":"p"},
+                                                    "nodeParent":197,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":199,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":116,"x":209,"name":"p"},
+                                                    "nodeParent":197,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":200,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":29,"x":312,"name":"p"},
+                                                    "nodeParent":197,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":201,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":91,"x":370,"name":"p"},
+                                                    "nodeParent":197,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":202,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":184,"x":304,"name":"p"},
+                                                    "nodeParent":197,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":203,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":200,"x":239,"name":"p"},
+                                                    "nodeParent":197,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":204,
+                                                    "child":[
+                                                        ]
+                                                }]
+                                        }],
                                     "$HIDDEN":true
                                 },
                                 {
@@ -311,13 +823,90 @@
                                     "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx5.png","name":"poly5","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly5",
-                                    "isOpen":true,
-                                    "isDirectory":false,
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
+                                    "hasChild":true,
                                     "compId":150,
                                     "child":[
-                                        ],
+                                        {
+                                            "type":"Sprite",
+                                            "searchKey":"Sprite,pointNode",
+                                            "props":{"y":0,"x":0,"name":"pointNode"},
+                                            "nodeParent":150,
+                                            "label":"pointNode",
+                                            "isOpen":false,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":206,
+                                            "child":[
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":253,"x":209,"name":"p"},
+                                                    "nodeParent":206,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":207,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":216,"x":209,"name":"p"},
+                                                    "nodeParent":206,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":208,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":208,"x":147,"name":"p"},
+                                                    "nodeParent":206,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":209,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":43,"x":209,"name":"p"},
+                                                    "nodeParent":206,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":210,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":184,"x":266,"name":"p"},
+                                                    "nodeParent":206,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":211,
+                                                    "child":[
+                                                        ]
+                                                }]
+                                        }],
                                     "$HIDDEN":true
                                 },
                                 {
@@ -326,13 +915,90 @@
                                     "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx6.png","name":"poly6","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly6",
-                                    "isOpen":true,
-                                    "isDirectory":false,
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
+                                    "hasChild":true,
                                     "compId":151,
                                     "child":[
-                                        ],
+                                        {
+                                            "type":"Sprite",
+                                            "searchKey":"Sprite,pointNode",
+                                            "props":{"y":0,"x":0,"name":"pointNode"},
+                                            "nodeParent":151,
+                                            "label":"pointNode",
+                                            "isOpen":false,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":214,
+                                            "child":[
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":137,"x":125,"name":"p"},
+                                                    "nodeParent":214,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":215,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":216,"x":209,"name":"p"},
+                                                    "nodeParent":214,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":216,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":137,"x":294,"name":"p"},
+                                                    "nodeParent":214,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":217,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":50,"x":209,"name":"p"},
+                                                    "nodeParent":214,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":218,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":137,"x":209,"name":"p"},
+                                                    "nodeParent":214,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":219,
+                                                    "child":[
+                                                        ]
+                                                }]
+                                        }],
                                     "$HIDDEN":true
                                 },
                                 {
@@ -341,13 +1007,116 @@
                                     "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx7.png","name":"poly7","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly7",
-                                    "isOpen":true,
-                                    "isDirectory":false,
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
+                                    "hasChild":true,
                                     "compId":152,
                                     "child":[
-                                        ],
+                                        {
+                                            "type":"Sprite",
+                                            "searchKey":"Sprite,pointNode",
+                                            "props":{"y":0,"x":0,"name":"pointNode"},
+                                            "nodeParent":152,
+                                            "label":"pointNode",
+                                            "isOpen":false,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":220,
+                                            "child":[
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":232,"x":209,"name":"p"},
+                                                    "nodeParent":220,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":221,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":137,"x":209,"name":"p"},
+                                                    "nodeParent":220,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":222,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":137,"x":125,"name":"p"},
+                                                    "nodeParent":220,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":223,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":50,"x":125,"name":"p"},
+                                                    "nodeParent":220,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":224,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":50,"x":293,"name":"p"},
+                                                    "nodeParent":220,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":225,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":137,"x":293,"name":"p"},
+                                                    "nodeParent":220,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":226,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":137,"x":251,"name":"p"},
+                                                    "nodeParent":220,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":227,
+                                                    "child":[
+                                                        ]
+                                                }]
+                                        }],
                                     "$HIDDEN":true
                                 },
                                 {
@@ -356,13 +1125,103 @@
                                     "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx8.png","name":"poly8","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly8",
-                                    "isOpen":true,
-                                    "isDirectory":false,
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
+                                    "hasChild":true,
                                     "compId":153,
                                     "child":[
-                                        ],
+                                        {
+                                            "type":"Sprite",
+                                            "searchKey":"Sprite,pointNode",
+                                            "props":{"y":0,"x":0,"name":"pointNode"},
+                                            "nodeParent":153,
+                                            "label":"pointNode",
+                                            "isOpen":false,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":228,
+                                            "child":[
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":253,"x":209,"name":"p"},
+                                                    "nodeParent":228,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":229,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":173,"x":209,"name":"p"},
+                                                    "nodeParent":228,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":230,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":100,"x":209,"name":"p"},
+                                                    "nodeParent":228,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":231,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":100,"x":146.5,"name":"p"},
+                                                    "nodeParent":228,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":232,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":100,"x":277,"name":"p"},
+                                                    "nodeParent":228,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":233,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":36,"x":209,"name":"p"},
+                                                    "nodeParent":228,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":234,
+                                                    "child":[
+                                                        ]
+                                                }]
+                                        }],
                                     "$HIDDEN":true
                                 },
                                 {
@@ -371,13 +1230,77 @@
                                     "props":{"y":161,"x":231,"skin":"weaponRes/sq_tx9.png","name":"poly9","anchorY":0.5,"anchorX":0.5},
                                     "nodeParent":146,
                                     "label":"poly9",
-                                    "isOpen":true,
-                                    "isDirectory":false,
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
+                                    "hasChild":true,
                                     "compId":154,
                                     "child":[
-                                        ],
+                                        {
+                                            "type":"Sprite",
+                                            "searchKey":"Sprite,pointNode",
+                                            "props":{"y":0,"x":0,"name":"pointNode"},
+                                            "nodeParent":154,
+                                            "label":"pointNode",
+                                            "isOpen":true,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":236,
+                                            "child":[
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":240,"x":193,"name":"p"},
+                                                    "nodeParent":236,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":237,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":143,"x":261,"name":"p"},
+                                                    "nodeParent":236,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":238,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":143,"x":154.5,"name":"p"},
+                                                    "nodeParent":236,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":239,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Sprite",
+                                                    "searchKey":"Sprite,p",
+                                                    "props":{"y":44,"x":217,"name":"p"},
+                                                    "nodeParent":236,
+                                                    "label":"p",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":240,
+                                                    "child":[
+                                                        ]
+                                                }]
+                                        }],
                                     "$HIDDEN":true
                                 }]
                         },

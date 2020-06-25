@@ -1078,6 +1078,10 @@
         }
         showVideo(cb) {
             this.videoCallback = cb;
+            if (!Laya.Browser.onWeiXin) {
+                this.videoCallback();
+                return;
+            }
             if (this.videoIsError) {
                 this.videoCallback();
                 return;
@@ -1212,6 +1216,12 @@
             this.startPos = null;
             this.lineArr = [];
             this.lineArrVec2 = [];
+            this.weaponNode = this['weaponNode'];
+            this.polyNode = this['polyNode'];
+            this.weaponPicNode = this['weaponPicNode'];
+            this.weaponTips = this['weaponTips'];
+            this.cmds = [];
+            this.pointsArr = [];
         }
         onOpened(param) {
             GameUI.Share = this;
@@ -1253,6 +1263,7 @@
             }
             SoundMgr.instance.playMusic('bgm.mp3');
             AdMgr.instance.hideBanner();
+            Laya.timer.frameOnce(1, this, this.initWeaponData);
         }
         onClosed() {
             Laya.timer.clearAll(this);
@@ -1378,6 +1389,8 @@
                 WxApi.OpenAlert('武器太短啦，请重画！');
                 return;
             }
+            let polyId = this.checkLineInPoly(this.lineArrVec2);
+            console.log('polyId:', polyId);
             GameLogic.Share.createLine3D(this.lineArrVec2);
         }
         touchOut(event) {
@@ -1573,6 +1586,77 @@
         shareVideoCB() {
             WxApi.ttEvent('Event_20');
             RecorderMgr.instance.shareVideo();
+        }
+        initWeaponData() {
+            for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
+                let pic = this.weaponPicNode.getChildAt(i);
+                pic.visible = i == 0;
+            }
+            this.cmds = this.polyNode.graphics.cmds;
+            let gPoint = this.polyNode.localToGlobal(new Laya.Point(0, 0));
+            for (let i = 0; i < this.cmds.length; i++) {
+                let points = this.cmds[i].points;
+                let arr = [];
+                for (let j = 0; j < points.length; j++) {
+                    if (j > 0 && j % 2 != 0) {
+                        let pos = new Laya.Vector2(points[j - 1], points[j]);
+                        pos.x += gPoint.x;
+                        pos.y += gPoint.y;
+                        arr.push(pos);
+                    }
+                }
+                this.pointsArr.push(arr);
+            }
+        }
+        checkLineInPoly(lineArr) {
+            let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+            for (let i = 0; i < 1; i++) {
+                let posArr = this.pointsArr[i];
+                for (let j = 0; j < lineArr.length; j++) {
+                    console.log(lineArr[j].clone());
+                    console.log([].concat(posArr));
+                    console.log(Utility.pointInPolygon(lineArr[j].clone(), [].concat(posArr)));
+                }
+            }
+            if (arr.length <= 0)
+                return -1;
+            console.log('111：', arr);
+            for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
+                if (arr.indexOf(i) == -1)
+                    continue;
+                let polyPointNode = this.weaponPicNode.getChildAt(i).getChildByName('pointNode');
+                let posArr = [];
+                for (let j = 0; j < polyPointNode.numChildren; j++) {
+                    let p = polyPointNode.getChildAt(j);
+                    let gp = polyPointNode.localToGlobal(new Laya.Point(p.x, p.y));
+                    posArr.push(new Laya.Vector2(gp.x, gp.y));
+                }
+                if (!this.checkPointDistancePoint(posArr, lineArr)) {
+                    arr.splice(arr.indexOf(i), 1);
+                }
+            }
+            if (arr.length <= 0)
+                return -1;
+            console.log('222：', arr);
+            return arr[0];
+        }
+        checkPointDistancePoint(polyArr, lineArr) {
+            for (let i = 0; i < polyArr.length; i++) {
+                let pp = polyArr[i];
+                let isDis = false;
+                for (let j = 0; j < lineArr.length; j++) {
+                    let lp = lineArr[j];
+                    let dis = Utility.calcDistance(pp, lp);
+                    if (dis < 30) {
+                        isDis = true;
+                        break;
+                    }
+                }
+                if (!isDis) {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 
@@ -1978,13 +2062,6 @@
                 localStorage.setItem('lastDate', new Date().getDate().toString());
                 localStorage.setItem('front_share_number', WxApi.front_share_number.toString());
             });
-            let pip = Utility.pointInPolygon(new Laya.Vector2(101, 101), [
-                new Laya.Vector2(0, 0),
-                new Laya.Vector2(0, 100),
-                new Laya.Vector2(100, 100),
-                new Laya.Vector2(100, 0)
-            ]);
-            console.log(pip);
         }
         loadAtlas() {
             var resUrl = [
