@@ -501,13 +501,16 @@ export default class GameUI extends Laya.Scene {
     polyNode: Laya.Sprite = this['polyNode']
     weaponPicNode: Laya.Sprite = this['weaponPicNode']
     weaponTips: Laya.Sprite = this['weaponTips']
+    godWeaponBtn: Laya.Image = this['godWeaponBtn']
     cmds: Laya.DrawPolyCmd[] = []
     pointsArr: any[] = []
     //初始化神器数据
     initWeaponData() {
+        this.godWeaponBtn.on(Laya.Event.CLICK, this, this.clickGodWeapon)
+
         for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
             let pic = this.weaponPicNode.getChildAt(i) as Laya.Image
-            pic.visible = i == 1
+            pic.visible = i == 0
         }
         this.cmds = this.polyNode.graphics.cmds
         let gPoint = this.polyNode.localToGlobal(new Laya.Point(0, 0))
@@ -575,6 +578,10 @@ export default class GameUI extends Laya.Scene {
             }
         }
         return true
+    }
+
+    clickGodWeapon() {
+
     }
 
     //*********神器系统**********/

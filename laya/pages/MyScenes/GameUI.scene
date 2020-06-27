@@ -1,12 +1,12 @@
 {
     "x":0,
     "type":"Scene",
-    "selectedBox":145,
-    "selecteID":143,
+    "selectedBox":2,
+    "selecteID":136,
     "searchKey":"Scene",
-    "props":{"width":750,"sceneColor":"#36eeff","runtime":"View/GameUI.ts","height":1624},
+    "props":{"width":750,"sceneColor":"#36eeff","runtime":"View/GameUI.ts","height":2000},
     "nodeParent":-1,
-    "maxID":243,
+    "maxID":244,
     "label":"Scene",
     "isOpen":true,
     "isDirectory":true,
@@ -92,14 +92,13 @@
                     "props":{"y":0,"x":0,"width":0,"var":"weaponNode","height":0},
                     "nodeParent":15,
                     "label":"weaponNode",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":141,
                     "child":[
                         {
-                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite,polyNode",
                             "props":{"y":0,"x":0,"width":0,"var":"polyNode","height":0},
@@ -112,7 +111,6 @@
                             "compId":145,
                             "child":[
                                 {
-                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p1",
                                     "props":{"y":23,"x":22,"points":"0,231,62,194,38,155,68,139,90,179,399,-1,414,27,107,206,129,245,100,261,78,223,16,258","name":"p1","lineWidth":1},
@@ -127,7 +125,6 @@
                                     "$HIDDEN":false
                                 },
                                 {
-                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p2",
                                     "props":{"y":23,"x":22,"points":"334,263,84,262,83,230,283,53,83,53,81,20,336,20,336,53,137,230,334,231","name":"p2","lineWidth":1},
@@ -142,7 +139,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p3",
                                     "props":{"y":23,"x":22,"points":"319,47,31,215,17,186,329,5,379,91,65,273,49,245,336,78","name":"p3","lineWidth":1},
@@ -157,7 +153,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p4",
                                     "props":{"y":23,"x":22,"points":"313,51,46,273,26,247,317,6,345,38,392,91,313,200,230,216,224,185,296,169,351,92","name":"p4","lineWidth":1},
@@ -172,7 +167,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p5",
                                     "props":{"y":23,"x":22,"points":"287,199,256,200,211,69,168,196,224,197,224,270,192,270,192,230,133,230,131,196,194,19,227,19","name":"p5","lineWidth":1},
@@ -187,7 +181,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p6",
                                     "props":{"y":23,"x":22,"points":"225,38,227,121,310,120,309,155,227,155,226,239,192,239,192,155,108,154,109,122,192,121,192,38","name":"p6","lineWidth":1},
@@ -202,7 +195,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p7",
                                     "props":{"y":23,"x":22,"points":"277,118,276,66,142,67,141,120,225,119,225,248,192,247,192,152,109,151,109,32,310,34,309,152,239,153,239,121","name":"p7","lineWidth":1},
@@ -217,7 +209,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p8",
                                     "props":{"y":23,"x":22,"points":"226,265,193,266,193,179,165,167,137,134,127,96,143,52,175,24,210,17,258,31,285,66,291,102,282,139,255,166,226,178","name":"p8","lineWidth":1},
@@ -232,7 +223,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Poly",
                                     "searchKey":"Poly,p9",
                                     "props":{"y":23,"x":22,"points":"282,157,200,262,175,243,239,156,135,157,136,123,220,18,244,38,179,125,281,124","name":"p9","lineWidth":1},
@@ -248,7 +238,6 @@
                                 }]
                         },
                         {
-                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite,weaponPicNode",
                             "props":{"y":0,"x":0,"var":"weaponPicNode"},
@@ -261,7 +250,6 @@
                             "compId":146,
                             "child":[
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly1",
                                     "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx1.png","name":"poly1","anchorY":0.5,"anchorX":0.5},
@@ -419,7 +407,6 @@
                                     "$HIDDEN":false
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly2",
                                     "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx2.png","name":"poly2","anchorY":0.5,"anchorX":0.5},
@@ -577,7 +564,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly3",
                                     "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx3.png","name":"poly3","anchorY":0.5,"anchorX":0.5},
@@ -709,7 +695,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly4",
                                     "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx4.png","name":"poly4","anchorY":0.5,"anchorX":0.5},
@@ -828,7 +813,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly5",
                                     "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx5.png","name":"poly5","anchorY":0.5,"anchorX":0.5},
@@ -921,7 +905,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly6",
                                     "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx6.png","name":"poly6","anchorY":0.5,"anchorX":0.5},
@@ -1014,7 +997,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly7",
                                     "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx7.png","name":"poly7","anchorY":0.5,"anchorX":0.5},
@@ -1133,7 +1115,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly8",
                                     "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx8.png","name":"poly8","anchorY":0.5,"anchorX":0.5},
@@ -1239,7 +1220,6 @@
                                     "$HIDDEN":true
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "searchKey":"Image,poly9",
                                     "props":{"y":161,"x":231,"visible":false,"skin":"weaponRes/sq_tx9.png","name":"poly9","anchorY":0.5,"anchorX":0.5},
@@ -1320,7 +1300,6 @@
                                 }]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,weaponTips",
                             "props":{"y":340,"x":230,"var":"weaponTips","skin":"weaponRes/sq_zt1.png","anchorY":0.5,"anchorX":0.5},
@@ -1807,13 +1786,14 @@
             "props":{"y":1050,"x":0,"var":"bottomNode"},
             "nodeParent":2,
             "label":"bottomNode",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":14,
             "child":[
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite,noPowerNode",
                     "props":{"y":0,"x":375,"visible":false,"var":"noPowerNode"},
@@ -1923,6 +1903,7 @@
                     "$HIDDEN":true
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite,btnNode",
                     "props":{"x":375,"var":"btnNode"},
@@ -1935,6 +1916,7 @@
                     "compId":50,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,upgradeBtn",
                             "props":{"y":-85,"x":375,"var":"upgradeBtn","skin":"mainUI/sy-sj.png","scaleY":1,"scaleX":1,"anchorY":0.5,"anchorX":1},
@@ -1962,6 +1944,7 @@
                             "$HIDDEN":false
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,skinBtn",
                             "props":{"y":85,"x":375,"var":"skinBtn","skin":"mainUI/sy-pf.png","anchorY":0.5,"anchorX":1},
@@ -1975,6 +1958,7 @@
                                 ]
                         },
                         {
+                            "x":45,
                             "type":"Sprite",
                             "searchKey":"Sprite,overNode",
                             "props":{"y":0,"x":0,"visible":false,"var":"overNode"},
@@ -2055,9 +2039,10 @@
                             "$HIDDEN":true
                         },
                         {
+                            "x":45,
                             "type":"Image",
                             "searchKey":"Image,shareVideo",
-                            "props":{"y":85,"x":-375,"var":"shareVideo","skin":"mainUI/sy-lp.png","anchorY":0.5},
+                            "props":{"y":-98,"x":-375,"var":"shareVideo","skin":"mainUI/sy-lp.png","anchorY":0.5},
                             "nodeParent":50,
                             "label":"shareVideo",
                             "isDirectory":false,
@@ -2066,10 +2051,25 @@
                             "compId":136,
                             "child":[
                                 ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Image",
+                            "searchKey":"Image,godWeaponBtn",
+                            "props":{"y":98,"x":-375,"var":"godWeaponBtn","skin":"weaponRes/sq_btn_sqtj.png","anchorY":0.5},
+                            "nodeParent":50,
+                            "label":"godWeaponBtn",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":243,
+                            "child":[
+                                ]
                         }],
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Sprite",
                     "searchKey":"Sprite,upgradeNode",
                     "props":{"y":-20,"x":750,"visible":false,"var":"upgradeNode"},

@@ -1602,7 +1602,7 @@
         initWeaponData() {
             for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
                 let pic = this.weaponPicNode.getChildAt(i);
-                pic.visible = i == 1;
+                pic.visible = i == 4;
             }
             this.cmds = this.polyNode.graphics.cmds;
             let gPoint = this.polyNode.localToGlobal(new Laya.Point(0, 0));
