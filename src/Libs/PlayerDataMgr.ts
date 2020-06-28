@@ -272,4 +272,26 @@ export default class PlayerDataMgr {
         return -1
     }
 
+    public static getWeaponDataById(id: number): any {
+        switch (id) {
+            case 0:
+                return { name: '塔卡纳', info: '移动速度增加10%' }
+            case 1:
+                return { name: '超能战刃', info: '挥动速度增加30%' }
+            case 2:
+                return { name: '棒棒!棒球棒', info: '击退距离增加30%' }
+            case 3:
+                return { name: '屠龙刀', info: '攻击力增加+30%' }
+            case 4:
+                return { name: '隐匿匕首', info: '移动速度降低10%一击必杀' }
+            case 5:
+                return { name: '黑武士之剑', info: '击杀一名敌人恢复25%血量' }
+            case 6:
+                return { name: '雷神之锤', info: '击中时对所有敌人造成40%的伤害' }
+            case 7:
+                return { name: '平底锅', info: '自身受到的伤害减少30%' }
+            case 8:
+                return { name: '越来越有电锯', info: '挥动速度降低10%,恢复2%生命/s' }
+        }
+    }
 }

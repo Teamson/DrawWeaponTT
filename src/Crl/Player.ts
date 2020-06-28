@@ -102,12 +102,21 @@ export default class Player extends Laya.Script {
         }
     }
     //获取被击退距离
-    getHitbackDistance() {
+    getHitbackDistance(eCrl?: Player) {
         let wLength: number = this.weaponLength
         if (wLength > 50) {
-            return this.backDistance - this.backDistance * (wLength - 50) * 0.01
+            let v = this.backDistance - this.backDistance * (wLength - 50) * 0.01
+            if (eCrl) {
+                return v * (1 + eCrl.backDisTemp)
+            } else {
+                return v
+            }
         } else {
-            return this.backDistance
+            if (eCrl) {
+                return this.backDistance * (1 + eCrl.backDisTemp)
+            } else {
+                return this.backDistance
+            }
         }
     }
 
@@ -116,6 +125,7 @@ export default class Player extends Laya.Script {
         let weaponRes: Laya.Sprite3D = Laya.loader.getRes(WxApi.UnityPath + 'H_Arms_' + (id + 1) + '.lh') as Laya.Sprite3D
         let weapon: Laya.Sprite3D = Laya.Sprite3D.instantiate(weaponRes, null, true, new Laya.Vector3(0, 0, 0));
         this.addWeapon(weapon)
+        this.addWeaponData(id)
     }
 
     //添加武器
@@ -143,7 +153,7 @@ export default class Player extends Laya.Script {
                 this.hp = PlayerDataMgr.getPlayerPowerData().hp
                 this.hpMax = this.hp
             }
-            this.atk = PlayerDataMgr.getPlayerPowerData().atk
+            this.atk = this.isOneKill ? 9999999 : PlayerDataMgr.getPlayerPowerData().atk
         } else {
             if (this.hp == this.hpMax) {
                 this.hp = PlayerDataMgr.getNpcData().hp
@@ -222,8 +232,17 @@ export default class Player extends Laya.Script {
                 ePos.y = 0
                 let dis = Laya.Vector3.distance(wPos, ePos)
                 if (!this.isBossState && dis <= 1) {
-                    let pCrl = e.getComponent(Player) as Player
-                    pCrl.hitBack(w, this.atk, this.myOwner)
+                    if (!this.isAllDamage) {
+                        let pCrl = e.getComponent(Player) as Player
+                        pCrl.hitBack(w, this.atk, this.myOwner)
+                    } else {
+                        for (let k = 0; k < this.enemyNode.numChildren; k++) {
+                            let en = this.enemyNode.getChildAt(k)
+                            let ec = en.getComponent(Player) as Player
+                            if (ec)
+                                ec.hitBack(w, this.atk * 0.4, this.myOwner)
+                        }
+                    }
                     return
                 } else if (this.isBossState && dis <= 5) {
                     let pCrl = e.getComponent(Boss) as Boss
@@ -248,7 +267,7 @@ export default class Player extends Laya.Script {
 
         this.createHitFX()
 
-        this.hp -= atk
+        this.hp -= atk * (1 - this.decDamage)
         if (this.hp <= 0) {
             if (!this.isPlayer) {
                 GameUI.Share.createCry(this.myOwner)
@@ -256,6 +275,12 @@ export default class Player extends Laya.Script {
                 //PlayerDataMgr.changeCoin(10)
                 GameLogic.Share.getCoinNum += 10
                 SoundMgr.instance.playSoundEffect('getCoin.mp3')
+
+                if (from) {
+                    let fCrl = from.getComponent(Player) as Player
+                    fCrl.hp = fCrl.hp + fCrl.hpMax * fCrl.healValue
+                    if (fCrl.hp > fCrl.hpMax) fCrl.hp = fCrl.hpMax
+                }
             } else {
                 GameUI.Share.createSmile(from)
             }
@@ -277,7 +302,8 @@ export default class Player extends Laya.Script {
         let dir = new Laya.Vector3(0, 0, 0)
         Laya.Vector3.subtract(pB, pA, dir)
         Laya.Vector3.normalize(dir, dir)
-        dir = new Laya.Vector3(dir.x * this.getHitbackDistance(), 0, dir.z * this.getHitbackDistance())
+        dir = new Laya.Vector3(
+            dir.x * this.getHitbackDistance(from ? (from.getComponent(Player)) : null), 0, dir.z * this.getHitbackDistance(from ? (from.getComponent(Player)) : null))
 
         let myPos = this.myOwner.transform.position.clone()
         Laya.Vector3.add(myPos, dir, myPos)
@@ -313,4 +339,48 @@ export default class Player extends Laya.Script {
         emb.transform.localRotation = this.embRotation
     }
 
+    backDisTemp: number = 0
+    healValue: number = 0
+    isAllDamage: boolean = false
+    decDamage: number = 0
+    isOneKill: boolean = false
+    //神器增加属性
+    addWeaponData(id: number) {
+        switch (id) {
+            case 0:
+                this.walkSpeed = this.walkSpeed * (1 + 0.1)
+                break
+            case 1:
+                this.weaponSpeed = this.weaponSpeed * (1 + 0.3)
+                break
+            case 2:
+                this.backDisTemp = 0.3
+                break
+            case 3:
+                this.atk = this.atk * (1 + 0.3)
+                break
+            case 4:
+                this.walkSpeed = this.walkSpeed * (1 - 0.1)
+                this.isOneKill = true
+                break
+            case 5:
+                this.healValue = 0.25
+                break
+            case 6:
+                this.isAllDamage = true
+                break
+            case 7:
+                this.decDamage = 0.3
+                break
+            case 8:
+                this.weaponSpeed = this.weaponSpeed * (1 + 0.1)
+                Laya.timer.loop(1000, this, () => {
+                    if (this.hp > 0) {
+                        this.hp += this.hpMax * 0.02
+                        if (this.hp > this.hpMax) this.hp = this.hpMax
+                    }
+                })
+                break
+        }
+    }
 }

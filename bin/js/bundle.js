@@ -221,7 +221,7 @@
         }
     }
     WxApi.UnityPath = 'LayaScene_MyScene/Conventional/';
-    WxApi.version = '1.0.5';
+    WxApi.version = '1.0.6';
     WxApi.isVibrate = true;
     WxApi.isMusic = true;
     WxApi.OnShowFun = null;
@@ -651,6 +651,28 @@
                 }
             }
             return -1;
+        }
+        static getWeaponDataById(id) {
+            switch (id) {
+                case 0:
+                    return { name: '塔卡纳', info: '移动速度增加10%' };
+                case 1:
+                    return { name: '超能战刃', info: '挥动速度增加30%' };
+                case 2:
+                    return { name: '棒棒!棒球棒', info: '击退距离增加30%' };
+                case 3:
+                    return { name: '屠龙刀', info: '攻击力增加+30%' };
+                case 4:
+                    return { name: '隐匿匕首', info: '移动速度降低10%一击必杀' };
+                case 5:
+                    return { name: '黑武士之剑', info: '击杀一名敌人恢复25%血量' };
+                case 6:
+                    return { name: '雷神之锤', info: '击中时对所有敌人造成40%的伤害' };
+                case 7:
+                    return { name: '平底锅', info: '自身受到的伤害减少30%' };
+                case 8:
+                    return { name: '越来越有电锯', info: '挥动速度降低10%,恢复2%生命/s' };
+            }
         }
     }
     PlayerDataMgr._playerData = null;
@@ -1220,14 +1242,25 @@
             this.polyNode = this['polyNode'];
             this.weaponPicNode = this['weaponPicNode'];
             this.weaponTips = this['weaponTips'];
+            this.godWeaponBtn = this['godWeaponBtn'];
             this.cmds = [];
             this.pointsArr = [];
+            this.refreshArr = [];
+            this.curWeaponId = -1;
         }
         onOpened(param) {
             GameUI.Share = this;
             this.initData();
             param && param();
             Laya.timer.frameLoop(1, this, this.checkIsNoPower);
+            if (PlayerDataMgr.getPlayerData().grade >= 3 && PlayerDataMgr.getPlayerData().gradeIndex == 0) {
+                if (!localStorage.getItem('weapon0')) {
+                    Laya.Scene.open('MyScenes/FoundWeaponUI.scene', false, 0);
+                    localStorage.setItem('weapon0', '1');
+                }
+                Laya.timer.frameOnce(1, this, this.initWeaponData);
+            }
+            this.godWeaponBtn.visible = PlayerDataMgr.getPlayerData().grade >= 3;
             if (!WxApi.launchGameUI) {
                 WxApi.GetLaunchParam((param) => {
                     let et = PlayerDataMgr.getPlayerData().exitTime;
@@ -1249,7 +1282,9 @@
                         WxApi.ExtractUIGapGrade--;
                     }
                     else {
-                        Laya.Scene.open('MyScenes/ExtractUI.scene', false);
+                        Laya.timer.once(100, this, () => {
+                            Laya.Scene.open('MyScenes/ExtractUI.scene', false);
+                        });
                     }
                 }
             }
@@ -1263,7 +1298,6 @@
             }
             SoundMgr.instance.playMusic('bgm.mp3');
             AdMgr.instance.hideBanner();
-            Laya.timer.frameOnce(1, this, this.initWeaponData);
         }
         onClosed() {
             Laya.timer.clearAll(this);
@@ -1393,6 +1427,7 @@
             console.log('polyId:', polyId);
             if (polyId != -1) {
                 GameLogic.Share.createGodWeapon(polyId);
+                this.dealWithAddWeapon(polyId);
             }
             else {
                 GameLogic.Share.createLine3D(this.lineArrVec2);
@@ -1412,6 +1447,7 @@
             console.log('polyId:', polyId);
             if (polyId != -1) {
                 GameLogic.Share.createGodWeapon(polyId);
+                this.dealWithAddWeapon(polyId);
             }
             else {
                 GameLogic.Share.createLine3D(this.lineArrVec2);
@@ -1525,6 +1561,7 @@
             this.upgradeBtn.visible = visible;
             this.skinBtn.visible = visible;
             this.shareVideo.visible = visible;
+            this.godWeaponBtn.visible = visible && PlayerDataMgr.getPlayerData().grade >= 3;
         }
         visibleGameOverNode(visible) {
             this.gameOverNode.visible = visible;
@@ -1547,7 +1584,7 @@
             GameLogic.Share.gradeIndex = 0;
             PlayerDataMgr.getPlayerData().gradeIndex = 0;
             PlayerDataMgr.setPlayerData();
-            this.visibleGameOverNode(false);
+            Laya.Scene.open('MyScenes/GameUI.scene');
             GameLogic.Share.restartGame();
         }
         createHpBar(node) {
@@ -1600,10 +1637,12 @@
             RecorderMgr.instance.shareVideo();
         }
         initWeaponData() {
+            this.godWeaponBtn.on(Laya.Event.CLICK, this, this.clickGodWeapon);
             for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
-                let pic = this.weaponPicNode.getChildAt(i);
-                pic.visible = i == 4;
+                if (localStorage.getItem('weapon' + i))
+                    this.refreshArr.push(i);
             }
+            this.refreshWeaponTips();
             this.cmds = this.polyNode.graphics.cmds;
             let gPoint = this.polyNode.localToGlobal(new Laya.Point(0, 0));
             for (let i = 0; i < this.cmds.length; i++) {
@@ -1649,7 +1688,10 @@
             }
             if (arr.length <= 0)
                 return -1;
-            return arr[0];
+            if (localStorage.getItem('weapon' + arr[0]) && arr[0] == this.curWeaponId)
+                return arr[0];
+            else
+                return -1;
         }
         checkPointDistancePoint(polyArr, lineArr) {
             for (let i = 0; i < polyArr.length; i++) {
@@ -1658,7 +1700,7 @@
                 for (let j = 0; j < lineArr.length; j++) {
                     let lp = lineArr[j];
                     let dis = Utility.calcDistance(pp, lp);
-                    if (dis < 30) {
+                    if (dis < 50) {
                         isDis = true;
                         break;
                     }
@@ -1668,6 +1710,26 @@
                 }
             }
             return true;
+        }
+        clickGodWeapon() {
+            Laya.Scene.open('MyScenes/WeaponDicUI.scene', false);
+        }
+        refreshWeaponTips() {
+            this.weaponTips.visible = false;
+            if (this.refreshArr.length <= 0)
+                return;
+            let id = Utility.getRandomItemInArr(this.refreshArr);
+            this.curWeaponId = id;
+            let pic = this.weaponPicNode.getChildAt(id);
+            pic.visible = true;
+            this.weaponTips.visible = true;
+        }
+        dealWithAddWeapon(id) {
+            this.refreshArr.splice(this.refreshArr.indexOf(id), 1);
+            let pic = this.weaponPicNode.getChildAt(this.curWeaponId);
+            pic.visible = false;
+            this.curWeaponId = -1;
+            this.refreshWeaponTips();
         }
     }
 
@@ -1697,6 +1759,11 @@
             this.embPos = null;
             this.embRotation = null;
             this.isBossState = false;
+            this.backDisTemp = 0;
+            this.healValue = 0;
+            this.isAllDamage = false;
+            this.decDamage = 0;
+            this.isOneKill = false;
         }
         onAwake() {
             this.myOwner = this.owner;
@@ -1750,19 +1817,31 @@
                 return this.weaponSpeed;
             }
         }
-        getHitbackDistance() {
+        getHitbackDistance(eCrl) {
             let wLength = this.weaponLength;
             if (wLength > 50) {
-                return this.backDistance - this.backDistance * (wLength - 50) * 0.01;
+                let v = this.backDistance - this.backDistance * (wLength - 50) * 0.01;
+                if (eCrl) {
+                    return v * (1 + eCrl.backDisTemp);
+                }
+                else {
+                    return v;
+                }
             }
             else {
-                return this.backDistance;
+                if (eCrl) {
+                    return this.backDistance * (1 + eCrl.backDisTemp);
+                }
+                else {
+                    return this.backDistance;
+                }
             }
         }
         addGodWeapon(id) {
             let weaponRes = Laya.loader.getRes(WxApi.UnityPath + 'H_Arms_' + (id + 1) + '.lh');
             let weapon = Laya.Sprite3D.instantiate(weaponRes, null, true, new Laya.Vector3(0, 0, 0));
             this.addWeapon(weapon);
+            this.addWeaponData(id);
         }
         addWeapon(weapon) {
             this.weaponNode.addChild(weapon);
@@ -1786,7 +1865,7 @@
                     this.hp = PlayerDataMgr.getPlayerPowerData().hp;
                     this.hpMax = this.hp;
                 }
-                this.atk = PlayerDataMgr.getPlayerPowerData().atk;
+                this.atk = this.isOneKill ? 9999999 : PlayerDataMgr.getPlayerPowerData().atk;
             }
             else {
                 if (this.hp == this.hpMax) {
@@ -1862,8 +1941,18 @@
                     ePos.y = 0;
                     let dis = Laya.Vector3.distance(wPos, ePos);
                     if (!this.isBossState && dis <= 1) {
-                        let pCrl = e.getComponent(Player);
-                        pCrl.hitBack(w, this.atk, this.myOwner);
+                        if (!this.isAllDamage) {
+                            let pCrl = e.getComponent(Player);
+                            pCrl.hitBack(w, this.atk, this.myOwner);
+                        }
+                        else {
+                            for (let k = 0; k < this.enemyNode.numChildren; k++) {
+                                let en = this.enemyNode.getChildAt(k);
+                                let ec = en.getComponent(Player);
+                                if (ec)
+                                    ec.hitBack(w, this.atk * 0.4, this.myOwner);
+                            }
+                        }
                         return;
                     }
                     else if (this.isBossState && dis <= 5) {
@@ -1884,13 +1973,19 @@
             let id = Utility.GetRandom(1, 4);
             SoundMgr.instance.playSoundEffect('weaponHit' + id + '.mp3');
             this.createHitFX();
-            this.hp -= atk;
+            this.hp -= atk * (1 - this.decDamage);
             if (this.hp <= 0) {
                 if (!this.isPlayer) {
                     GameUI.Share.createCry(this.myOwner);
                     GameUI.Share.createCoinBoom(this.myOwner);
                     GameLogic.Share.getCoinNum += 10;
                     SoundMgr.instance.playSoundEffect('getCoin.mp3');
+                    if (from) {
+                        let fCrl = from.getComponent(Player);
+                        fCrl.hp = fCrl.hp + fCrl.hpMax * fCrl.healValue;
+                        if (fCrl.hp > fCrl.hpMax)
+                            fCrl.hp = fCrl.hpMax;
+                    }
                 }
                 else {
                     GameUI.Share.createSmile(from);
@@ -1910,7 +2005,7 @@
             let dir = new Laya.Vector3(0, 0, 0);
             Laya.Vector3.subtract(pB, pA, dir);
             Laya.Vector3.normalize(dir, dir);
-            dir = new Laya.Vector3(dir.x * this.getHitbackDistance(), 0, dir.z * this.getHitbackDistance());
+            dir = new Laya.Vector3(dir.x * this.getHitbackDistance(from ? (from.getComponent(Player)) : null), 0, dir.z * this.getHitbackDistance(from ? (from.getComponent(Player)) : null));
             let myPos = this.myOwner.transform.position.clone();
             Laya.Vector3.add(myPos, dir, myPos);
             Utility.TmoveTo(this.myOwner, 200, myPos, () => { this.isHited = false; });
@@ -1938,6 +2033,45 @@
             emb.transform.localScale = this.embScale;
             emb.transform.localPosition = this.embPos;
             emb.transform.localRotation = this.embRotation;
+        }
+        addWeaponData(id) {
+            switch (id) {
+                case 0:
+                    this.walkSpeed = this.walkSpeed * (1 + 0.1);
+                    break;
+                case 1:
+                    this.weaponSpeed = this.weaponSpeed * (1 + 0.3);
+                    break;
+                case 2:
+                    this.backDisTemp = 0.3;
+                    break;
+                case 3:
+                    this.atk = this.atk * (1 + 0.3);
+                    break;
+                case 4:
+                    this.walkSpeed = this.walkSpeed * (1 - 0.1);
+                    this.isOneKill = true;
+                    break;
+                case 5:
+                    this.healValue = 0.25;
+                    break;
+                case 6:
+                    this.isAllDamage = true;
+                    break;
+                case 7:
+                    this.decDamage = 0.3;
+                    break;
+                case 8:
+                    this.weaponSpeed = this.weaponSpeed * (1 + 0.1);
+                    Laya.timer.loop(1000, this, () => {
+                        if (this.hp > 0) {
+                            this.hp += this.hpMax * 0.02;
+                            if (this.hp > this.hpMax)
+                                this.hp = this.hpMax;
+                        }
+                    });
+                    break;
+            }
         }
     }
 
@@ -2924,6 +3058,29 @@
         }
     }
 
+    class FoundWeaponUI extends Laya.Scene {
+        constructor() {
+            super();
+            this.tipsPic = this['tipsPic'];
+            this.weaponPic = this['weaponPic'];
+            this.weaponName = this['weaponName'];
+            this.info = this['info'];
+            this.sureBtn = this['sureBtn'];
+        }
+        onOpened(id) {
+            this.sureBtn.on(Laya.Event.CLICK, this, this.sureBtnCB);
+            this.weaponPic.skin = 'weaponRes/sq_wq' + (id + 1) + '.png';
+            this.tipsPic.skin = 'weaponRes/sq_tx' + (id + 1) + '.png';
+            this.weaponName.text = PlayerDataMgr.getWeaponDataById(id).name;
+            this.info.text = PlayerDataMgr.getWeaponDataById(id).info;
+        }
+        onClosed() {
+        }
+        sureBtnCB() {
+            this.close();
+        }
+    }
+
     class FreeSkinUI extends Laya.Scene {
         constructor() {
             super();
@@ -3408,6 +3565,91 @@
         }
     }
 
+    class WeaponDicUI extends Laya.Scene {
+        constructor() {
+            super();
+            this.closeBtn = this['closeBtn'];
+            this.gotNum = this['gotNum'];
+            this.weaponName = this['weaponName'];
+            this.weaponPic = this['weaponPic'];
+            this.tipsPic = this['tipsPic'];
+            this.info = this['info'];
+            this.leftBtn = this['leftBtn'];
+            this.rightBtn = this['rightBtn'];
+            this.pointNode = this['pointNode'];
+            this.tipsBg = this['tipsBg'];
+            this.findBtn = this['findBtn'];
+            this.lightAni = this['lightAni'];
+            this.curPage = 0;
+        }
+        onOpened() {
+            this.closeBtn.on(Laya.Event.CLICK, this, this.closeBtnCB);
+            this.leftBtn.on(Laya.Event.CLICK, this, this.turnPageBtnCB, [true]);
+            this.rightBtn.on(Laya.Event.CLICK, this, this.turnPageBtnCB, [false]);
+            this.findBtn.on(Laya.Event.CLICK, this, this.findBtnCB);
+            this.initWeaponData(this.curPage);
+        }
+        onClosed() {
+        }
+        turnPageBtnCB(isLeft) {
+            if (isLeft) {
+                this.curPage--;
+            }
+            else {
+                this.curPage++;
+            }
+            this.initWeaponData(this.curPage);
+        }
+        initWeaponData(id) {
+            this.weaponPic.skin = 'weaponRes/sq_wq' + (id + 1) + '.png';
+            this.tipsPic.skin = 'weaponRes/sq_tx' + (id + 1) + '.png';
+            this.weaponName.text = PlayerDataMgr.getWeaponDataById(id).name;
+            this.info.text = PlayerDataMgr.getWeaponDataById(id).info;
+            this.leftBtn.visible = this.curPage > 0;
+            this.rightBtn.visible = this.curPage < 8;
+            for (let i = 0; i < this.pointNode.numChildren; i++) {
+                let p = this.pointNode.getChildAt(i);
+                p.skin = 'weaponRes/sq_yd' + (i == id ? '2' : '1') + '.png';
+            }
+            if (!localStorage.getItem('weapon' + id)) {
+                this.weaponName.text = '未知神器';
+                this.weaponPic.skin = 'weaponRes/sq_wh.png';
+                this.tipsBg.visible = false;
+                this.info.visible = false;
+                this.findBtn.visible = true;
+                this.lightAni.y = 300;
+                this.weaponPic.y = 300;
+                this.weaponPic.scale(1, 1);
+            }
+            else {
+                this.tipsBg.visible = true;
+                this.info.visible = true;
+                this.findBtn.visible = false;
+                this.lightAni.y = 342;
+                this.weaponPic.y = 342;
+                this.weaponPic.scale(0.5, 0.5);
+            }
+            let count = 0;
+            for (let i = 0; i < 9; i++) {
+                if (localStorage.getItem('weapon' + i)) {
+                    count++;
+                }
+            }
+            this.gotNum.text = count.toString() + '/9';
+        }
+        findBtnCB() {
+            let cb = () => {
+                localStorage.setItem('weapon' + this.curPage, '1');
+                GameUI.Share.refreshArr.push(this.curPage);
+                this.initWeaponData(this.curPage);
+            };
+            AdMgr.instance.showVideo(cb);
+        }
+        closeBtnCB() {
+            this.close();
+        }
+    }
+
     class GameConfig {
         constructor() {
         }
@@ -3419,6 +3661,7 @@
             reg("View/ClickBoxUI.ts", ClickBoxUI);
             reg("View/ExtractUI.ts", ExtractUI);
             reg("View/FinishUI.ts", FinishUI);
+            reg("View/FoundWeaponUI.ts", FoundWeaponUI);
             reg("View/FreeSkinUI.ts", FreeSkinUI);
             reg("View/GameUI.ts", GameUI);
             reg("View/GameTopNode.ts", GameTopNode);
@@ -3426,6 +3669,7 @@
             reg("View/OfflineUI.ts", OfflineUI);
             reg("View/ShareVideoUI.ts", ShareVideoUI);
             reg("View/SkinUI.ts", SkinUI);
+            reg("View/WeaponDicUI.ts", WeaponDicUI);
             reg("Crl/FixAiTips.ts", FixAiTips);
         }
     }

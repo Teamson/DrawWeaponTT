@@ -1,0 +1,21 @@
+{
+  "code": "import BoxUI from \"./View/BoxUI\";\r\nimport FixAdShareIcon from \"./Libs/FixAdShareIcon\";\r\nimport FixNodeY from \"./Libs/FixNodeY\";\r\nimport ClickBoxUI from \"./View/ClickBoxUI\";\r\nimport ExtractUI from \"./View/ExtractUI\";\r\nimport FinishUI from \"./View/FinishUI\";\r\nimport FoundWeaponUI from \"./View/FoundWeaponUI\";\r\nimport FreeSkinUI from \"./View/FreeSkinUI\";\r\nimport GameUI from \"./View/GameUI\";\r\nimport GameTopNode from \"./View/GameTopNode\";\r\nimport LoadingUI from \"./View/LoadingUI\";\r\nimport OfflineUI from \"./View/OfflineUI\";\r\nimport ShareVideoUI from \"./View/ShareVideoUI\";\r\nimport SkinUI from \"./View/SkinUI\";\r\nimport WeaponDicUI from \"./View/WeaponDicUI\";\r\nimport FixAiTips from \"./Crl/FixAiTips\";\r\nexport default class GameConfig {\r\n    constructor() {\r\n    }\r\n    static init() {\r\n        var reg = Laya.ClassUtils.regClass;\r\n        reg(\"View/BoxUI.ts\", BoxUI);\r\n        reg(\"Libs/FixAdShareIcon.ts\", FixAdShareIcon);\r\n        reg(\"Libs/FixNodeY.ts\", FixNodeY);\r\n        reg(\"View/ClickBoxUI.ts\", ClickBoxUI);\r\n        reg(\"View/ExtractUI.ts\", ExtractUI);\r\n        reg(\"View/FinishUI.ts\", FinishUI);\r\n        reg(\"View/FoundWeaponUI.ts\", FoundWeaponUI);\r\n        reg(\"View/FreeSkinUI.ts\", FreeSkinUI);\r\n        reg(\"View/GameUI.ts\", GameUI);\r\n        reg(\"View/GameTopNode.ts\", GameTopNode);\r\n        reg(\"View/LoadingUI.ts\", LoadingUI);\r\n        reg(\"View/OfflineUI.ts\", OfflineUI);\r\n        reg(\"View/ShareVideoUI.ts\", ShareVideoUI);\r\n        reg(\"View/SkinUI.ts\", SkinUI);\r\n        reg(\"View/WeaponDicUI.ts\", WeaponDicUI);\r\n        reg(\"Crl/FixAiTips.ts\", FixAiTips);\r\n    }\r\n}\r\nGameConfig.width = 750;\r\nGameConfig.height = 1334;\r\nGameConfig.scaleMode = \"fixedwidth\";\r\nGameConfig.screenMode = \"vertical\";\r\nGameConfig.alignV = \"middle\";\r\nGameConfig.alignH = \"center\";\r\nGameConfig.startScene = \"MyScenes/LoadingUI.scene\";\r\nGameConfig.sceneRoot = \"\";\r\nGameConfig.debug = false;\r\nGameConfig.stat = false;\r\nGameConfig.physicsDebug = false;\r\nGameConfig.exportSceneToJson = true;\r\nGameConfig.init();\r\n",
+  "references": [
+    "E:/LayaProjects/DrawWeaponTT/src/View/BoxUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/Libs/FixAdShareIcon.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/Libs/FixNodeY.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/ClickBoxUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/ExtractUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/FinishUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/FoundWeaponUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/FreeSkinUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/GameUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/GameTopNode.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/LoadingUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/OfflineUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/ShareVideoUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/SkinUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/View/WeaponDicUI.ts",
+    "E:/LayaProjects/DrawWeaponTT/src/Crl/FixAiTips.ts"
+  ]
+}

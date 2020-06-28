@@ -1,0 +1,6 @@
+{
+  "code": "import PlayerDataMgr from \"../Libs/PlayerDataMgr\";\r\nexport default class FoundWeaponUI extends Laya.Scene {\r\n    constructor() {\r\n        super();\r\n        this.tipsPic = this['tipsPic'];\r\n        this.weaponPic = this['weaponPic'];\r\n        this.weaponName = this['weaponName'];\r\n        this.info = this['info'];\r\n        this.sureBtn = this['sureBtn'];\r\n    }\r\n    onOpened(id) {\r\n        this.sureBtn.on(Laya.Event.CLICK, this, this.sureBtnCB);\r\n        this.weaponPic.skin = 'weaponRes/sq_wq' + (id + 1) + '.png';\r\n        this.tipsPic.skin = 'weaponRes/sq_tx' + (id + 1) + '.png';\r\n        this.weaponName.text = PlayerDataMgr.getWeaponDataById(id).name;\r\n        this.info.text = PlayerDataMgr.getWeaponDataById(id).info;\r\n    }\r\n    onClosed() {\r\n    }\r\n    sureBtnCB() {\r\n        this.close();\r\n    }\r\n}\r\n",
+  "references": [
+    "E:/LayaProjects/DrawWeaponTT/src/Libs/PlayerDataMgr.ts"
+  ]
+}

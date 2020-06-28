@@ -7,7 +7,7 @@
 				"cull":0,
 				"blend":1,
 				"srcBlend":770,
-				"dstBlend":1,
+				"dstBlend":771,
 				"depthWrite":false,
 				"depthTest":515
 			}
@@ -53,8 +53,6 @@
 				]
 			}
 		],
-		"defines":[
-			"ADDTIVEFOG"
-		]
+		"defines":[]
 	}
 }

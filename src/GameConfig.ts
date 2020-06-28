@@ -5,6 +5,7 @@ import FixNodeY from "./Libs/FixNodeY"
 import ClickBoxUI from "./View/ClickBoxUI"
 import ExtractUI from "./View/ExtractUI"
 import FinishUI from "./View/FinishUI"
+import FoundWeaponUI from "./View/FoundWeaponUI"
 import FreeSkinUI from "./View/FreeSkinUI"
 import GameUI from "./View/GameUI"
 import GameTopNode from "./View/GameTopNode"
@@ -12,6 +13,7 @@ import LoadingUI from "./View/LoadingUI"
 import OfflineUI from "./View/OfflineUI"
 import ShareVideoUI from "./View/ShareVideoUI"
 import SkinUI from "./View/SkinUI"
+import WeaponDicUI from "./View/WeaponDicUI"
 import FixAiTips from "./Crl/FixAiTips"
 /*
 * 游戏初始化配置;
@@ -38,6 +40,7 @@ export default class GameConfig{
         reg("View/ClickBoxUI.ts",ClickBoxUI);
         reg("View/ExtractUI.ts",ExtractUI);
         reg("View/FinishUI.ts",FinishUI);
+        reg("View/FoundWeaponUI.ts",FoundWeaponUI);
         reg("View/FreeSkinUI.ts",FreeSkinUI);
         reg("View/GameUI.ts",GameUI);
         reg("View/GameTopNode.ts",GameTopNode);
@@ -45,6 +48,7 @@ export default class GameConfig{
         reg("View/OfflineUI.ts",OfflineUI);
         reg("View/ShareVideoUI.ts",ShareVideoUI);
         reg("View/SkinUI.ts",SkinUI);
+        reg("View/WeaponDicUI.ts",WeaponDicUI);
         reg("Crl/FixAiTips.ts",FixAiTips);
     }
 }

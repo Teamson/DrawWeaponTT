@@ -57,6 +57,15 @@ export default class GameUI extends Laya.Scene {
         param && param()
         Laya.timer.frameLoop(1, this, this.checkIsNoPower)
 
+        if (PlayerDataMgr.getPlayerData().grade >= 3 && PlayerDataMgr.getPlayerData().gradeIndex == 0) {
+            if (!localStorage.getItem('weapon0')) {
+                Laya.Scene.open('MyScenes/FoundWeaponUI.scene', false, 0)
+                localStorage.setItem('weapon0', '1')
+            }
+            Laya.timer.frameOnce(1, this, this.initWeaponData)
+        }
+        this.godWeaponBtn.visible = PlayerDataMgr.getPlayerData().grade >= 3
+
         if (!WxApi.launchGameUI) {
             WxApi.GetLaunchParam((param) => {
                 let et = PlayerDataMgr.getPlayerData().exitTime
@@ -76,7 +85,9 @@ export default class GameUI extends Laya.Scene {
                 if (WxApi.ExtractUIGapGrade > 0) {
                     WxApi.ExtractUIGapGrade--
                 } else {
-                    Laya.Scene.open('MyScenes/ExtractUI.scene', false)
+                    Laya.timer.once(100, this, () => {
+                        Laya.Scene.open('MyScenes/ExtractUI.scene', false)
+                    })
                 }
             }
         }
@@ -93,8 +104,6 @@ export default class GameUI extends Laya.Scene {
         SoundMgr.instance.playMusic('bgm.mp3')
 
         AdMgr.instance.hideBanner()
-
-        Laya.timer.frameOnce(1, this, this.initWeaponData)
     }
 
     onClosed() {
@@ -247,6 +256,7 @@ export default class GameUI extends Laya.Scene {
 
         if (polyId != -1) {
             GameLogic.Share.createGodWeapon(polyId)
+            this.dealWithAddWeapon(polyId)
         } else {
             GameLogic.Share.createLine3D(this.lineArrVec2)
         }
@@ -267,6 +277,7 @@ export default class GameUI extends Laya.Scene {
 
         if (polyId != -1) {
             GameLogic.Share.createGodWeapon(polyId)
+            this.dealWithAddWeapon(polyId)
         } else {
             GameLogic.Share.createLine3D(this.lineArrVec2)
         }
@@ -401,6 +412,7 @@ export default class GameUI extends Laya.Scene {
         this.upgradeBtn.visible = visible
         this.skinBtn.visible = visible
         this.shareVideo.visible = visible
+        this.godWeaponBtn.visible = visible && PlayerDataMgr.getPlayerData().grade >= 3
         // this.moreGameBtn.visible = visible
         // this.drawGameBtn.visible = visible
 
@@ -437,7 +449,8 @@ export default class GameUI extends Laya.Scene {
         GameLogic.Share.gradeIndex = 0
         PlayerDataMgr.getPlayerData().gradeIndex = 0
         PlayerDataMgr.setPlayerData()
-        this.visibleGameOverNode(false)
+        //this.visibleGameOverNode(false)
+        Laya.Scene.open('MyScenes/GameUI.scene')
         GameLogic.Share.restartGame()
     }
 
@@ -504,14 +517,18 @@ export default class GameUI extends Laya.Scene {
     godWeaponBtn: Laya.Image = this['godWeaponBtn']
     cmds: Laya.DrawPolyCmd[] = []
     pointsArr: any[] = []
+    refreshArr: number[] = []
+    curWeaponId: number = -1
     //初始化神器数据
     initWeaponData() {
         this.godWeaponBtn.on(Laya.Event.CLICK, this, this.clickGodWeapon)
 
         for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
-            let pic = this.weaponPicNode.getChildAt(i) as Laya.Image
-            pic.visible = i == 0
+            // let pic = this.weaponPicNode.getChildAt(i) as Laya.Image
+            // pic.visible = i == 0
+            if (localStorage.getItem('weapon' + i)) this.refreshArr.push(i)
         }
+        this.refreshWeaponTips()
         this.cmds = this.polyNode.graphics.cmds
         let gPoint = this.polyNode.localToGlobal(new Laya.Point(0, 0))
         for (let i = 0; i < this.cmds.length; i++) {
@@ -559,7 +576,11 @@ export default class GameUI extends Laya.Scene {
         }
 
         if (arr.length <= 0) return -1
-        return arr[0]
+        if (localStorage.getItem('weapon' + arr[0]) && arr[0] == this.curWeaponId)
+            return arr[0]
+        else
+            return -1
+
     }
     checkPointDistancePoint(polyArr: Laya.Vector2[], lineArr: Laya.Vector2[]) {
         for (let i = 0; i < polyArr.length; i++) {
@@ -568,7 +589,7 @@ export default class GameUI extends Laya.Scene {
             for (let j = 0; j < lineArr.length; j++) {
                 let lp = lineArr[j]
                 let dis = Utility.calcDistance(pp, lp)
-                if (dis < 30) {
+                if (dis < 50) {
                     isDis = true
                     break
                 }
@@ -581,7 +602,25 @@ export default class GameUI extends Laya.Scene {
     }
 
     clickGodWeapon() {
+        Laya.Scene.open('MyScenes/WeaponDicUI.scene', false)
+    }
 
+    refreshWeaponTips() {
+        this.weaponTips.visible = false
+        if (this.refreshArr.length <= 0) return
+        let id = Utility.getRandomItemInArr(this.refreshArr)
+        this.curWeaponId = id
+        let pic = this.weaponPicNode.getChildAt(id) as Laya.Image
+        pic.visible = true
+        this.weaponTips.visible = true
+    }
+
+    dealWithAddWeapon(id: number) {
+        this.refreshArr.splice(this.refreshArr.indexOf(id), 1)
+        let pic = this.weaponPicNode.getChildAt(this.curWeaponId) as Laya.Image
+        pic.visible = false
+        this.curWeaponId = -1
+        this.refreshWeaponTips()
     }
 
     //*********神器系统**********/
