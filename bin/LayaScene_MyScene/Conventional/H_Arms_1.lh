@@ -20,15 +20,15 @@
 				-0.7071068
 			],
 			"scale":[
-				1,
-				1,
-				1
+				1.3,
+				1.3,
+				1.3
 			],
-			"meshPath":"Assets/FBX/H_Arms_1-H_Arms_1.lm",
+			"meshPath":"Assets/FBX/H_Arms_9-H_Arms_9.lm",
 			"enableRender":true,
 			"materials":[
 				{
-					"path":"Assets/FBX/Materials/H_Arms_1.lmat"
+					"path":"Assets/FBX/Materials/H_Arms_9.lmat"
 				}
 			]
 		},
@@ -44,7 +44,7 @@
 					"layer":0,
 					"position":[
 						0,
-						-0.92,
+						-0.86,
 						0
 					],
 					"rotation":[
@@ -70,15 +70,15 @@
 							"isStatic":false,
 							"layer":0,
 							"position":[
-								0,
-								0.475,
-								-0.078
+								0.071,
+								0.074,
+								-0.163
 							],
 							"rotation":[
-								-0.6998004,
+								-0.6642672,
 								0,
 								0,
-								-0.7143384
+								-0.7474952
 							],
 							"scale":[
 								1,
@@ -86,42 +86,120 @@
 								1
 							],
 							"main":{
-								"randomSeed":1.218046E+09,
+								"randomSeed":0,
 								"bases":{
 									"isPerformanceMode":true,
-									"startDelayType":1,
-									"startDelay":2,
-									"startDelayMax":2,
-									"startLifetimeConstant":1.7,
-									"startLifetimeConstantMax":1.7,
-									"startSpeedConstant":1,
-									"startSpeedConstantMax":1,
+									"startLifetimeConstant":0.3,
+									"startLifetimeConstantMax":0.3,
+									"startSizeConstant":0.5,
+									"startSizeConstantMax":0.5,
+									"gravityModifier":5,
+									"simulationSpace":0,
 									"maxParticles":1000
+								},
+								"vector3s":{
+									"startSizeConstantSeparate":[
+										0.5,
+										1,
+										1
+									],
+									"startSizeConstantMaxSeparate":[
+										0.5,
+										1,
+										1
+									]
 								}
 							},
 							"emission":{
 								"bases":{
 									"enable":true,
-									"emissionRate":0
-								},
-								"bursts":[
-									{
-										"time":0,
-										"min":0,
-										"max":1
-									}
-								]
+									"emissionRate":100
+								}
 							},
 							"shape":{
 								"shapeType":2,
 								"bases":{
 									"enable":true,
 									"radius":0.0001,
-									"angle":0,
-									"emitType":0,
-									"x":0.006761773,
-									"y":0,
-									"z":0.1176682
+									"angle":0.05291294,
+									"length":0.9462596,
+									"emitType":2
+								}
+							},
+							"colorOverLifetime":{
+								"bases":{
+									"enable":true
+								},
+								"color":{
+									"type":1,
+									"gradient":{
+										"alphas":[
+											{
+												"key":0,
+												"value":1
+											},
+											{
+												"key":0.8,
+												"value":1
+											},
+											{
+												"key":1,
+												"value":0
+											}
+										],
+										"rgbs":[
+											{
+												"key":0,
+												"value":[
+													1,
+													0.5735729,
+													0
+												]
+											},
+											{
+												"key":1,
+												"value":[
+													1,
+													0.6472527,
+													0
+												]
+											}
+										]
+									},
+									"gradientMax":{
+										"alphas":[
+											{
+												"key":0,
+												"value":1
+											},
+											{
+												"key":0.8,
+												"value":1
+											},
+											{
+												"key":1,
+												"value":0
+											}
+										],
+										"rgbs":[
+											{
+												"key":0,
+												"value":[
+													1,
+													0.5735729,
+													0
+												]
+											},
+											{
+												"key":1,
+												"value":[
+													1,
+													0.6472527,
+													0
+												]
+											}
+										]
+									}
 								}
 							},
 							"sizeOverLifetime":{
@@ -134,11 +212,7 @@
 										"sizes":[
 											{
 												"key":0,
-												"value":0
-											},
-											{
-												"key":0.5600833,
-												"value":0.7088487
+												"value":1
 											},
 											{
 												"key":1,
@@ -150,11 +224,7 @@
 										"sizes":[
 											{
 												"key":0,
-												"value":0
-											},
-											{
-												"key":0.5600833,
-												"value":0.7088487
+												"value":1
 											},
 											{
 												"key":1,
@@ -166,11 +236,7 @@
 										"sizes":[
 											{
 												"key":0,
-												"value":0
-											},
-											{
-												"key":0.5600833,
-												"value":0.7088487
+												"value":1
 											},
 											{
 												"key":1,
@@ -182,11 +248,7 @@
 										"sizes":[
 											{
 												"key":0,
-												"value":0
-											},
-											{
-												"key":0.5600833,
-												"value":0.7088487
+												"value":1
 											},
 											{
 												"key":1,
@@ -194,26 +256,6 @@
 											}
 										]
 									}
-								}
-							},
-							"rotationOverLifetime":{
-								"bases":{
-									"enable":true
-								},
-								"angularVelocity":{
-									"type":0,
-									"constant":6.283185,
-									"constantMax":6.283185,
-									"constantSeparate":[
-										0,
-										0,
-										-6.283185
-									],
-									"constantMaxSeparate":[
-										0,
-										0,
-										6.283185
-									]
 								}
 							},
 							"renderer":{
@@ -226,96 +268,8 @@
 						"child":[]
 					},
 					{
-						"type":"TrailSprite3D",
-						"instanceID":3,
-						"props":{
-							"name":"Trail",
-							"active":true,
-							"isStatic":false,
-							"layer":0,
-							"position":[
-								-0.058,
-								0,
-								0
-							],
-							"rotation":[
-								0,
-								0,
-								0,
-								-1
-							],
-							"scale":[
-								1,
-								1,
-								1
-							],
-							"time":0.1,
-							"minVertexDistance":0.1,
-							"widthMultiplier":1.7,
-							"textureMode":0,
-							"widthCurve":[
-								{
-									"time":0,
-									"inTangent":0,
-									"outTangent":0,
-									"value":1
-								},
-								{
-									"time":1,
-									"inTangent":0,
-									"outTangent":0,
-									"value":1
-								}
-							],
-							"colorGradient":{
-								"mode":0,
-								"colorKeys":[
-									{
-										"time":0,
-										"value":[
-											0,
-											1,
-											0.9099836
-										]
-									},
-									{
-										"time":1,
-										"value":[
-											0,
-											1,
-											0.9099836
-										]
-									}
-								],
-								"alphaKeys":[
-									{
-										"time":0,
-										"value":1
-									},
-									{
-										"time":0.4882429,
-										"value":0
-									},
-									{
-										"time":1,
-										"value":0
-									}
-								]
-							},
-							"alignment":1,
-							"materials":[
-								{
-									"type":"Laya.TrailMaterial",
-									"path":"Assets/Materials/Trail.lmat"
-								}
-							]
-						},
-						"components":[],
-						"child":[]
-					},
-					{
 						"type":"ShuriKenParticle3D",
-						"instanceID":4,
+						"instanceID":3,
 						"props":{
 							"name":"Light",
 							"active":true,
@@ -323,7 +277,7 @@
 							"layer":0,
 							"position":[
 								0,
-								-0.182,
+								-0.2419997,
 								0
 							],
 							"rotation":[
@@ -338,7 +292,7 @@
 								1
 							],
 							"main":{
-								"randomSeed":2.48451E+09,
+								"randomSeed":0,
 								"bases":{
 									"isPerformanceMode":true,
 									"duration":1,
@@ -361,20 +315,6 @@
 										20,
 										1,
 										1
-									]
-								},
-								"vector4s":{
-									"startColorConstant":[
-										1,
-										1,
-										1,
-										0.4392157
-									],
-									"startColorConstantMax":[
-										1,
-										1,
-										1,
-										0.4392157
 									]
 								}
 							},
@@ -500,7 +440,7 @@
 							},
 							"renderer":{
 								"resources":{
-									"material":"Assets/FX/magic_line 1.lmat"
+									"material":"Assets/FX/Materials/magic_line 2.lmat"
 								}
 							}
 						},
@@ -511,7 +451,7 @@
 			},
 			{
 				"type":"Sprite3D",
-				"instanceID":5,
+				"instanceID":4,
 				"props":{
 					"name":"GameObject (1)",
 					"active":true,
@@ -519,8 +459,36 @@
 					"layer":0,
 					"position":[
 						0,
-						-2.159,
-						0
+						-1.77,
+						0.15
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":5,
+				"props":{
+					"name":"GameObject (2)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						0,
+						0.197,
+						0.15
 					],
 					"rotation":[
 						0,
@@ -541,14 +509,126 @@
 				"type":"Sprite3D",
 				"instanceID":6,
 				"props":{
-					"name":"GameObject (2)",
+					"name":"GameObject (3)",
 					"active":true,
 					"isStatic":false,
 					"layer":0,
 					"position":[
 						0,
-						0.251,
-						0
+						-2.359,
+						0.15
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":7,
+				"props":{
+					"name":"GameObject (4)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						0.65,
+						-1.345,
+						0.15
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":8,
+				"props":{
+					"name":"GameObject (5)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						-0.632,
+						-1.397,
+						0.15
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":9,
+				"props":{
+					"name":"GameObject (6)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						0.598,
+						-0.678,
+						0.15
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":10,
+				"props":{
+					"name":"GameObject (7)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						-0.572,
+						-0.661,
+						0.15
 					],
 					"rotation":[
 						0,

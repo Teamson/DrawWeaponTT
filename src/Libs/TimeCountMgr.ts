@@ -1,4 +1,5 @@
 import PlayerDataMgr from "./PlayerDataMgr"
+import WxApi from "./WxApi"
 
 export default class TimeCountMgr {
     constructor() {
@@ -43,15 +44,15 @@ export default class TimeCountMgr {
         exitTime /= 1000
         let t = Math.floor(exitTime / 600)
         PlayerDataMgr.getPlayerData().power += t
-        if (PlayerDataMgr.getPlayerData().power > 10) {
-            PlayerDataMgr.getPlayerData().power = 10
+        if (PlayerDataMgr.getPlayerData().power > PlayerDataMgr.maxPower) {
+            PlayerDataMgr.getPlayerData().power = PlayerDataMgr.maxPower
             PlayerDataMgr.setPlayerData()
         }
     }
 
     calculateTime() {
         if (this.tCount <= 0) {
-            if (PlayerDataMgr.getPlayerData().power < 10) {
+            if (PlayerDataMgr.getPlayerData().power < PlayerDataMgr.maxPower) {
                 this.tCount = 600
             } else {
                 this.tCount = 0
@@ -61,10 +62,10 @@ export default class TimeCountMgr {
         this.tCount--
 
         if (this.tCount <= 0) {
-            if (PlayerDataMgr.getPlayerData().power < 10) {
+            if (PlayerDataMgr.getPlayerData().power < PlayerDataMgr.maxPower) {
                 PlayerDataMgr.getPlayerData().power += 1
                 PlayerDataMgr.setPlayerData()
-                this.tCount = PlayerDataMgr.getPlayerData().power < 10 ? 600 : 0
+                this.tCount = PlayerDataMgr.getPlayerData().power < PlayerDataMgr.maxPower ? 600 : 0
             }
         }
     }

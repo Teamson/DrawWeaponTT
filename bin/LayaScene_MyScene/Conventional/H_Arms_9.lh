@@ -2,7 +2,7 @@
 	"version":"LAYAHIERARCHY:02",
 	"data":{
 		"type":"MeshSprite3D",
-		"instanceID":52,
+		"instanceID":84,
 		"props":{
 			"name":"H_Arms_9",
 			"active":true,
@@ -20,15 +20,15 @@
 				-0.7071068
 			],
 			"scale":[
-				1,
-				1,
-				1
+				1.3,
+				1.3,
+				1.3
 			],
-			"meshPath":"Assets/FBX/H_Arms_9-H_Arms_9.lm",
+			"meshPath":"Assets/FBX/H_Arms_1-H_Arms_1.lm",
 			"enableRender":true,
 			"materials":[
 				{
-					"path":"Assets/FBX/Materials/H_Arms_9.lmat"
+					"path":"Assets/FBX/Materials/H_Arms_1.lmat"
 				}
 			]
 		},
@@ -36,7 +36,7 @@
 		"child":[
 			{
 				"type":"Sprite3D",
-				"instanceID":53,
+				"instanceID":85,
 				"props":{
 					"name":"GameObject",
 					"active":true,
@@ -44,7 +44,7 @@
 					"layer":0,
 					"position":[
 						0,
-						-0.86,
+						-0.92,
 						0
 					],
 					"rotation":[
@@ -63,300 +63,7 @@
 				"child":[
 					{
 						"type":"ShuriKenParticle3D",
-						"instanceID":54,
-						"props":{
-							"name":"Particle System",
-							"active":true,
-							"isStatic":false,
-							"layer":0,
-							"position":[
-								0,
-								0,
-								-0.163
-							],
-							"rotation":[
-								-0.6642672,
-								0,
-								0,
-								-0.7474952
-							],
-							"scale":[
-								1,
-								1,
-								1
-							],
-							"main":{
-								"randomSeed":3.876765E+08,
-								"bases":{
-									"isPerformanceMode":true,
-									"startLifetimeConstant":0.2,
-									"startLifetimeConstantMax":0.2,
-									"startSizeConstant":0.2,
-									"startSizeConstantMax":0.2,
-									"gravityModifier":5,
-									"maxParticles":1000
-								},
-								"vector3s":{
-									"startSizeConstantSeparate":[
-										0.2,
-										1,
-										1
-									],
-									"startSizeConstantMaxSeparate":[
-										0.2,
-										1,
-										1
-									]
-								}
-							},
-							"emission":{
-								"bases":{
-									"enable":true,
-									"emissionRate":30
-								}
-							},
-							"shape":{
-								"shapeType":2,
-								"bases":{
-									"enable":true,
-									"radius":0.0001,
-									"angle":0.05291294,
-									"length":0.9462596,
-									"emitType":2
-								}
-							},
-							"colorOverLifetime":{
-								"bases":{
-									"enable":true
-								},
-								"color":{
-									"type":1,
-									"gradient":{
-										"alphas":[
-											{
-												"key":0,
-												"value":1
-											},
-											{
-												"key":0.8,
-												"value":1
-											},
-											{
-												"key":1,
-												"value":0
-											}
-										],
-										"rgbs":[
-											{
-												"key":0,
-												"value":[
-													1,
-													0.5735729,
-													0
-												]
-											},
-											{
-												"key":1,
-												"value":[
-													1,
-													0.6472527,
-													0
-												]
-											}
-										]
-									},
-									"gradientMax":{
-										"alphas":[
-											{
-												"key":0,
-												"value":1
-											},
-											{
-												"key":0.8,
-												"value":1
-											},
-											{
-												"key":1,
-												"value":0
-											}
-										],
-										"rgbs":[
-											{
-												"key":0,
-												"value":[
-													1,
-													0.5735729,
-													0
-												]
-											},
-											{
-												"key":1,
-												"value":[
-													1,
-													0.6472527,
-													0
-												]
-											}
-										]
-									}
-								}
-							},
-							"sizeOverLifetime":{
-								"bases":{
-									"enable":true
-								},
-								"size":{
-									"type":0,
-									"gradient":{
-										"sizes":[
-											{
-												"key":0,
-												"value":1
-											},
-											{
-												"key":1,
-												"value":0
-											}
-										]
-									},
-									"gradientX":{
-										"sizes":[
-											{
-												"key":0,
-												"value":1
-											},
-											{
-												"key":1,
-												"value":0
-											}
-										]
-									},
-									"gradientMax":{
-										"sizes":[
-											{
-												"key":0,
-												"value":1
-											},
-											{
-												"key":1,
-												"value":0
-											}
-										]
-									},
-									"gradientXMax":{
-										"sizes":[
-											{
-												"key":0,
-												"value":1
-											},
-											{
-												"key":1,
-												"value":0
-											}
-										]
-									}
-								}
-							},
-							"renderer":{
-								"resources":{
-									"material":"Assets/FX/magic_line 1.lmat"
-								}
-							}
-						},
-						"components":[],
-						"child":[]
-					},
-					{
-						"type":"TrailSprite3D",
-						"instanceID":55,
-						"props":{
-							"name":"Trail",
-							"active":true,
-							"isStatic":false,
-							"layer":0,
-							"position":[
-								0,
-								-0.285,
-								0
-							],
-							"rotation":[
-								0,
-								0,
-								0,
-								-1
-							],
-							"scale":[
-								1,
-								1,
-								1
-							],
-							"time":0.1,
-							"minVertexDistance":0.1,
-							"widthMultiplier":1,
-							"textureMode":0,
-							"widthCurve":[
-								{
-									"time":0,
-									"inTangent":0,
-									"outTangent":0,
-									"value":1
-								},
-								{
-									"time":1,
-									"inTangent":0,
-									"outTangent":0,
-									"value":1
-								}
-							],
-							"colorGradient":{
-								"mode":0,
-								"colorKeys":[
-									{
-										"time":0,
-										"value":[
-											1,
-											0.8392158,
-											0.1647059
-										]
-									},
-									{
-										"time":1,
-										"value":[
-											1,
-											0.8392158,
-											0.1647059
-										]
-									}
-								],
-								"alphaKeys":[
-									{
-										"time":0,
-										"value":1
-									},
-									{
-										"time":0.1529412,
-										"value":1
-									},
-									{
-										"time":1,
-										"value":0
-									}
-								]
-							},
-							"alignment":1,
-							"materials":[
-								{
-									"type":"Laya.TrailMaterial",
-									"path":"Assets/Materials/Trail.lmat"
-								}
-							]
-						},
-						"components":[],
-						"child":[]
-					},
-					{
-						"type":"ShuriKenParticle3D",
-						"instanceID":56,
+						"instanceID":86,
 						"props":{
 							"name":"Light",
 							"active":true,
@@ -364,7 +71,7 @@
 							"layer":0,
 							"position":[
 								0,
-								-0.2419997,
+								-0.182,
 								0
 							],
 							"rotation":[
@@ -379,7 +86,7 @@
 								1
 							],
 							"main":{
-								"randomSeed":3.644116E+09,
+								"randomSeed":0,
 								"bases":{
 									"isPerformanceMode":true,
 									"duration":1,
@@ -402,20 +109,6 @@
 										20,
 										1,
 										1
-									]
-								},
-								"vector4s":{
-									"startColorConstant":[
-										1,
-										1,
-										1,
-										0.4392157
-									],
-									"startColorConstantMax":[
-										1,
-										1,
-										1,
-										0.4392157
 									]
 								}
 							},
@@ -541,6 +234,156 @@
 							},
 							"renderer":{
 								"resources":{
+									"material":"Assets/FX/Materials/magic_line 2.lmat"
+								}
+							}
+						},
+						"components":[],
+						"child":[]
+					},
+					{
+						"type":"ShuriKenParticle3D",
+						"instanceID":87,
+						"props":{
+							"name":"Particle System",
+							"active":true,
+							"isStatic":false,
+							"layer":0,
+							"position":[
+								-0.034,
+								-0.356,
+								0.016
+							],
+							"rotation":[
+								-0.5,
+								0.5,
+								0.5,
+								-0.5
+							],
+							"scale":[
+								1,
+								0,
+								1
+							],
+							"main":{
+								"randomSeed":0,
+								"bases":{
+									"isPerformanceMode":true,
+									"startLifetimeConstant":1,
+									"startLifetimeConstantMax":1,
+									"startSpeedConstant":0,
+									"startSpeedConstantMax":0,
+									"startSizeConstant":0.5,
+									"startSizeConstantMax":0.5,
+									"simulationSpace":0,
+									"maxParticles":1000
+								},
+								"vector3s":{
+									"startSizeConstantSeparate":[
+										0.5,
+										1,
+										1
+									],
+									"startSizeConstantMaxSeparate":[
+										0.5,
+										1,
+										1
+									]
+								}
+							},
+							"emission":{
+								"bases":{
+									"enable":true,
+									"emissionRate":60
+								}
+							},
+							"shape":{
+								"shapeType":2,
+								"bases":{
+									"enable":true,
+									"angle":0,
+									"length":16.79777,
+									"emitType":0
+								}
+							},
+							"sizeOverLifetime":{
+								"bases":{
+									"enable":true
+								},
+								"size":{
+									"type":0,
+									"gradient":{
+										"sizes":[
+											{
+												"key":0,
+												"value":1
+											},
+											{
+												"key":1,
+												"value":0
+											}
+										]
+									},
+									"gradientX":{
+										"sizes":[
+											{
+												"key":0,
+												"value":1
+											},
+											{
+												"key":1,
+												"value":0
+											}
+										]
+									},
+									"gradientMax":{
+										"sizes":[
+											{
+												"key":0,
+												"value":1
+											},
+											{
+												"key":1,
+												"value":0
+											}
+										]
+									},
+									"gradientXMax":{
+										"sizes":[
+											{
+												"key":0,
+												"value":1
+											},
+											{
+												"key":1,
+												"value":0
+											}
+										]
+									}
+								}
+							},
+							"rotationOverLifetime":{
+								"bases":{
+									"enable":true
+								},
+								"angularVelocity":{
+									"type":0,
+									"constant":6.283185,
+									"constantMax":6.283185,
+									"constantSeparate":[
+										0,
+										0,
+										-6.283185
+									],
+									"constantMaxSeparate":[
+										0,
+										0,
+										6.283185
+									]
+								}
+							},
+							"renderer":{
+								"resources":{
 									"material":"Assets/FX/magic_line 1.lmat"
 								}
 							}
@@ -552,7 +395,7 @@
 			},
 			{
 				"type":"Sprite3D",
-				"instanceID":57,
+				"instanceID":88,
 				"props":{
 					"name":"GameObject (1)",
 					"active":true,
@@ -560,8 +403,8 @@
 					"layer":0,
 					"position":[
 						0,
-						-1.77,
-						0.15
+						-2.159,
+						0
 					],
 					"rotation":[
 						0,
@@ -580,7 +423,7 @@
 			},
 			{
 				"type":"Sprite3D",
-				"instanceID":58,
+				"instanceID":89,
 				"props":{
 					"name":"GameObject (2)",
 					"active":true,
@@ -588,8 +431,148 @@
 					"layer":0,
 					"position":[
 						0,
-						0.197,
-						0.15
+						0.251,
+						0
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":90,
+				"props":{
+					"name":"GameObject (3)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						-0.332,
+						-2.159,
+						0
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":91,
+				"props":{
+					"name":"GameObject (4)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						0.227,
+						-2.159,
+						0
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":92,
+				"props":{
+					"name":"GameObject (5)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						-0.051,
+						-2.501,
+						0
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":93,
+				"props":{
+					"name":"GameObject (6)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						0.317,
+						-1.273,
+						0
+					],
+					"rotation":[
+						0,
+						0,
+						0,
+						-1
+					],
+					"scale":[
+						1,
+						1,
+						1
+					]
+				},
+				"components":[],
+				"child":[]
+			},
+			{
+				"type":"Sprite3D",
+				"instanceID":94,
+				"props":{
+					"name":"GameObject (7)",
+					"active":true,
+					"isStatic":false,
+					"layer":0,
+					"position":[
+						-0.393,
+						-1.257,
+						0
 					],
 					"rotation":[
 						0,

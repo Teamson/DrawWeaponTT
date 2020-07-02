@@ -79,6 +79,6 @@ export default class GameTopNode extends Laya.Script {
 
         this.powerNum.value = PlayerDataMgr.getPlayerData().power.toString()
 
-        this.powerTime.visible = PlayerDataMgr.getPlayerData().power < 10
+        this.powerTime.visible = PlayerDataMgr.getPlayerData().power < PlayerDataMgr.maxPower
     }
 }

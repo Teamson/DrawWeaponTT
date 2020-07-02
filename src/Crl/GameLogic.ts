@@ -42,7 +42,12 @@ export default class GameLogic {
     public getCoinNum: number = 0
 
     constructor() {
-        localStorage.clear()
+        //localStorage.clear()
+        for (let i = 0; i < 9; i++) {
+            localStorage.setItem('weapon' + i, '1')
+        }
+        PlayerDataMgr.getPlayerData().coin = 999999
+        PlayerDataMgr.setPlayerData()
         //初始化广告
         AdMgr.instance.initAd()
         //初始化录屏
@@ -415,14 +420,15 @@ export default class GameLogic {
                 Laya.Scene.close('MyScenes/GameUI.scene')
 
                 let cb = () => {
-                    if (PlayerDataMgr.getPlayerData().grade <= 2) {
+                    if (PlayerDataMgr.getPlayerData().grade <= 1) {
                         Laya.Scene.open('MyScenes/FinishUI.scene', false)
                     } else {
                         Laya.Scene.open('MyScenes/ShareVideoUI.scene', false)
                     }
                 }
 
-                if (WxApi.configData.GQQT_kg && Math.floor((PlayerDataMgr.getPlayerData().grade - 1 - WxApi.configData.GQQT_GQKZ) % 3) == 0) {
+                if (WxApi.configData.GQQT_kg && Math.floor((PlayerDataMgr.getPlayerData().grade - 1 - WxApi.configData.GQQT_GQKZ) % 3) == 0 &&
+                    PlayerDataMgr.getPlayerData().grade - 1 - WxApi.configData.GQQT_GQKZ >= 0) {
                     AdMgr.instance.closeVCB = cb
                     AdMgr.instance.showVideo(() => { })
                 } else {

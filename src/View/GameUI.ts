@@ -57,14 +57,24 @@ export default class GameUI extends Laya.Scene {
         param && param()
         Laya.timer.frameLoop(1, this, this.checkIsNoPower)
 
-        if (PlayerDataMgr.getPlayerData().grade >= 3 && PlayerDataMgr.getPlayerData().gradeIndex == 0) {
+        if (PlayerDataMgr.getPlayerData().grade >= 2 && PlayerDataMgr.getPlayerData().gradeIndex == 0) {
             if (!localStorage.getItem('weapon0')) {
                 Laya.Scene.open('MyScenes/FoundWeaponUI.scene', false, 0)
                 localStorage.setItem('weapon0', '1')
             }
+            if (!localStorage.getItem('weaponGrade')) {
+                localStorage.setItem('weaponGrade', '0')
+            }
+            for (let i = 1; i < 9; i++) {
+                if (!localStorage.getItem('weapon' + i) && i * 2 - parseInt(localStorage.getItem('weaponGrade')) == 0) {
+                    localStorage.setItem('weapon' + i, '1')
+                    Laya.Scene.open('MyScenes/FoundWeaponUI.scene', false, i)
+                    break
+                }
+            }
             Laya.timer.frameOnce(1, this, this.initWeaponData)
         }
-        this.godWeaponBtn.visible = PlayerDataMgr.getPlayerData().grade >= 3
+        this.godWeaponBtn.visible = PlayerDataMgr.getPlayerData().grade >= 2
 
         if (!WxApi.launchGameUI) {
             WxApi.GetLaunchParam((param) => {
@@ -92,7 +102,7 @@ export default class GameUI extends Laya.Scene {
             }
         }
 
-        this['drawTips'].visible = PlayerDataMgr.getPlayerData().grade <= 2
+        this['drawTips'].visible = PlayerDataMgr.getPlayerData().grade <= 1
         this['drawTips'].skin = PlayerDataMgr.getPlayerData().grade == 1 ? 'mainUI/sy_ck2.png' : 'mainUI/sy_ck1.png'
 
         if (!localStorage.getItem('guide') && PlayerDataMgr.getPlayerData().grade == 1) {
@@ -324,14 +334,12 @@ export default class GameUI extends Laya.Scene {
 
     //皮肤按钮回调
     skinBtnCB() {
-        console.log('点击皮肤按钮')
         WxApi.aldEvent('皮肤界面：点击')
         Laya.Scene.open('MyScenes/SkinUI.scene', false, () => { })
     }
 
     //升级人数
     upgradePlayerCountCB() {
-        console.log('点击升级人数')
         if (PlayerDataMgr.getPlayerCountLv() >= 5) {
             return
         }
@@ -348,7 +356,6 @@ export default class GameUI extends Laya.Scene {
     }
     //升级攻击力
     upgradePlayerAtkCB() {
-        console.log('点击升级攻击力')
         if (PlayerDataMgr.getPlayerPowerLv() >= 35) {
             return
         }
@@ -365,7 +372,6 @@ export default class GameUI extends Laya.Scene {
     }
     //升级离线收益
     upgradeOfflineCB() {
-        console.log('点击升级离线收益')
         if (PlayerDataMgr.getPlayerOfflineLv() >= 56) {
             return
         }
@@ -390,6 +396,7 @@ export default class GameUI extends Laya.Scene {
         this.upgradeBtn.visible = !visible
         this.skinBtn.visible = !visible
         this.shareVideo.visible = !visible
+        this.refreshBtn.visible = !visible && PlayerDataMgr.getPlayerData().grade >= 2
     }
     reviveBtnCB() {
         GameLogic.Share.revivePlayer()
@@ -412,7 +419,8 @@ export default class GameUI extends Laya.Scene {
         this.upgradeBtn.visible = visible
         this.skinBtn.visible = visible
         this.shareVideo.visible = visible
-        this.godWeaponBtn.visible = visible && PlayerDataMgr.getPlayerData().grade >= 3
+        this.godWeaponBtn.visible = visible && PlayerDataMgr.getPlayerData().grade >= 2
+        this.refreshBtn.visible = visible && PlayerDataMgr.getPlayerData().grade >= 2
         // this.moreGameBtn.visible = visible
         // this.drawGameBtn.visible = visible
 
@@ -480,6 +488,7 @@ export default class GameUI extends Laya.Scene {
             WxApi.aldEvent('获得体力：成功')
             PlayerDataMgr.getPlayerData().power += 5
             PlayerDataMgr.setPlayerData()
+            this.refreshBtn.visible = true
         }
         AdMgr.instance.showVideo(cb)
     }
@@ -515,6 +524,7 @@ export default class GameUI extends Laya.Scene {
     weaponPicNode: Laya.Sprite = this['weaponPicNode']
     weaponTips: Laya.Sprite = this['weaponTips']
     godWeaponBtn: Laya.Image = this['godWeaponBtn']
+    refreshBtn: Laya.Image = this['refreshBtn']
     cmds: Laya.DrawPolyCmd[] = []
     pointsArr: any[] = []
     refreshArr: number[] = []
@@ -522,6 +532,7 @@ export default class GameUI extends Laya.Scene {
     //初始化神器数据
     initWeaponData() {
         this.godWeaponBtn.on(Laya.Event.CLICK, this, this.clickGodWeapon)
+        this.refreshBtn.on(Laya.Event.CLICK, this, this.refreshBtnCB)
 
         for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
             // let pic = this.weaponPicNode.getChildAt(i) as Laya.Image
@@ -576,10 +587,11 @@ export default class GameUI extends Laya.Scene {
         }
 
         if (arr.length <= 0) return -1
-        if (localStorage.getItem('weapon' + arr[0]) && arr[0] == this.curWeaponId)
-            return arr[0]
-        else
+        if (arr.indexOf(this.curWeaponId) != -1 && localStorage.getItem('weapon' + this.curWeaponId)) {
+            return this.curWeaponId
+        } else {
             return -1
+        }
 
     }
     checkPointDistancePoint(polyArr: Laya.Vector2[], lineArr: Laya.Vector2[]) {
@@ -605,14 +617,41 @@ export default class GameUI extends Laya.Scene {
         Laya.Scene.open('MyScenes/WeaponDicUI.scene', false)
     }
 
+    hideAllWeaponPics() {
+        for (let i = 0; i < this.weaponPicNode.numChildren; i++) {
+            let pic = this.weaponPicNode.getChildAt(i) as Laya.Image
+            pic.visible = false
+        }
+    }
+
     refreshWeaponTips() {
         this.weaponTips.visible = false
         if (this.refreshArr.length <= 0) return
         let id = Utility.getRandomItemInArr(this.refreshArr)
         this.curWeaponId = id
+        this.hideAllWeaponPics()
         let pic = this.weaponPicNode.getChildAt(id) as Laya.Image
         pic.visible = true
         this.weaponTips.visible = true
+        this.refreshBtn.visible = this.weaponTips.visible && this.refreshArr.length > 1 && this.touchPanel.visible
+    }
+    refreshBtnCB() {
+        let arr = [].concat(this.refreshArr)
+        if (arr.length <= 0) {
+            this.refreshBtn.visible = false
+            return
+        }
+        arr.splice(arr.indexOf(this.curWeaponId), 1)
+        if (arr.length <= 0) {
+            this.refreshBtn.visible = false
+            return
+        }
+        let id = Utility.getRandomItemInArr(arr)
+        this.curWeaponId = id
+        this.hideAllWeaponPics()
+        let pic = this.weaponPicNode.getChildAt(id) as Laya.Image
+        pic.visible = true
+        this.refreshBtn.visible = this.weaponTips.visible
     }
 
     dealWithAddWeapon(id: number) {

@@ -4,7 +4,7 @@ import AdMgr from "../Mod/AdMgr"
 export default class WxApi {
     public static UnityPath: string = 'LayaScene_MyScene/Conventional/'
 
-    public static version: string = '1.0.6'
+    public static version: string = '1.0.8'
     public static isVibrate: boolean = true
     public static isMusic: boolean = true
     public static OnShowFun: Function = null
@@ -21,6 +21,8 @@ export default class WxApi {
     public static launchGameUI: boolean = false
 
     public static firstStartGame: boolean = false
+
+    public static showFinishWudian: number = 0
 
     public static ExtractUIGapGrade: number = 0
 
@@ -225,10 +227,11 @@ export default class WxApi {
             },
             appLaunchOptions: [
                 { appId: "tt49703fcdd64ab8f4" },
+                { appId: "ttcbf5bd4854cff760" },
                 { appId: "tt2def5b52b2c5a4ee" },
                 { appId: "tt3eb2480fa19877fb" },
                 { appId: "tt3fc3497ea0e924bc" },
-                { appId: "tt3b5e4de3a474a39e" }
+                { appId: "ttccd7ba6a53fd8cfe" }
             ],
             onNavigateToMiniGameBox(res) {
                 console.log("跳转到小游戏盒子", res);
@@ -249,10 +252,11 @@ export default class WxApi {
                 Laya.Browser.window.tt.showMoreGamesModal({
                     appLaunchOptions: [
                         { appId: "tt49703fcdd64ab8f4" },
-                        { appId: "ttccd7ba6a53fd8cfe" },
+                        { appId: "ttcbf5bd4854cff760" },
                         { appId: "tt2def5b52b2c5a4ee" },
                         { appId: "tt3eb2480fa19877fb" },
-                        { appId: "tt3fc3497ea0e924bc" }
+                        { appId: "tt3fc3497ea0e924bc" },
+                        { appId: "ttccd7ba6a53fd8cfe" }
                     ],
                     success(res) {
                         console.log("success", res.errMsg);

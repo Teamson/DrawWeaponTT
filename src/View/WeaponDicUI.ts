@@ -59,7 +59,7 @@ export default class WeaponDicUI extends Laya.Scene {
         }
 
         if (!localStorage.getItem('weapon' + id)) {
-            this.weaponName.text = '未知神器'
+            this.weaponName.text = '通关' + (id * 2 - parseInt(localStorage.getItem('weaponGrade'))) + '个关卡后解锁'
             this.weaponPic.skin = 'weaponRes/sq_wh.png'
             this.tipsBg.visible = false
             this.info.visible = false
@@ -89,6 +89,7 @@ export default class WeaponDicUI extends Laya.Scene {
         let cb = () => {
             localStorage.setItem('weapon' + this.curPage, '1')
             GameUI.Share.refreshArr.push(this.curPage)
+            GameUI.Share.refreshWeaponTips()
             this.initWeaponData(this.curPage)
         }
         AdMgr.instance.showVideo(cb)

@@ -221,7 +221,6 @@ D TTRes
 P 631BFA22 dy-an.png
 P 83672AB1 dy-an2.png
 P 50D6B798 dy-an3.png
-P AA35C30A dy-df.png
 P 4A330F2A dy-di.png
 P 9EA8218D dy-guang.png
 P 4D160A5D dy-jb.png
@@ -242,6 +241,12 @@ P 828BC89E dy-wz7.png
 P FB5AC40F dy-wz8.png
 P 7B573EDC dy-wz9.png
 P 57570FC0 dy-x5.png
+P 33B21F2F fxlo_an.png
+P 851CE068 fxlo_an2.png
+P 66ACFC0F fxlo_an3.png
+P E4D19FCD fxlo_qhan.png
+P A0BDA822 fxlp_tl.png
+P 1BAE15AA fxlp_whns.png
 D weaponRes
 P 1B5064DD sq_btn_fxsq.png
 P A69CBEA2 sq_btn_jt.png
@@ -251,7 +256,7 @@ P A2F65181 sq_dk1.png
 P 0E11AA9B sq_dk2.png
 P AB3DF853 sq_dk3.png
 P CDC44AF5 sq_dk4.png
-P DB8B4975 sq_tx1.png
+P 007C0A30 sq_tx1.png
 P B445311E sq_tx2.png
 P 3D1412C5 sq_tx3.png
 P F9C3B71A sq_tx4.png
@@ -259,9 +264,9 @@ P CE66A758 sq_tx5.png
 P 8851AFC6 sq_tx6.png
 P 09AAB8FA sq_tx7.png
 P A863579E sq_tx8.png
-P 007C0A30 sq_tx9.png
+P DB8B4975 sq_tx9.png
 P 880CA9D0 sq_wh.png
-P 926C7A58 sq_wq1.png
+P FEF5B1B1 sq_wq1.png
 P FF81DDF1 sq_wq2.png
 P 10F7C2D2 sq_wq3.png
 P DD0ADCD1 sq_wq4.png
@@ -269,7 +274,7 @@ P 8B82F5F6 sq_wq5.png
 P E7ABF96D sq_wq6.png
 P 1611E685 sq_wq7.png
 P 8287FA51 sq_wq8.png
-P FEF5B1B1 sq_wq9.png
+P 926C7A58 sq_wq9.png
 P 54AAED5C sq_xg.png
 P 6101FD09 sq_yd1.png
 P 7C33C04A sq_yd2.png

@@ -15,6 +15,7 @@ export class PlayerData {
 }
 
 export default class PlayerDataMgr {
+    public static maxPower: number = 10
     private static _playerData: PlayerData = null
     public static tempSkinId: number = -1
     public static aiConfig: any = null

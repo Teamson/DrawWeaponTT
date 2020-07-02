@@ -46,9 +46,14 @@ export default class FinishUI extends Laya.Scene {
 
         this.navNode.visible = !WxApi.getIsIos()
         this.initNavNode()
+
+        if (localStorage.getItem('weaponGrade')) {
+            localStorage.setItem('weaponGrade', (parseInt(localStorage.getItem('weaponGrade')) + 1).toString())
+        }
     }
 
     onClosed() {
+        WxApi.showFinishWudian--
         AdMgr.instance.hideBanner()
     }
 
@@ -94,13 +99,15 @@ export default class FinishUI extends Laya.Scene {
         PlayerDataMgr.setPlayerData()
     }
 
-    videoCoinBtnCB() {
+    videoCoinBtnCB(ccb?: boolean) {
         WxApi.ttEvent('Event_14')
         let cb: Function = () => {
             WxApi.ttEvent('Event_15')
             PlayerDataMgr.changeCoin(GameLogic.Share.getCoinNum * 5)
             this.closeCoinPage()
         }
+        if (ccb)
+            AdMgr.instance.closeVCB = cb
         AdMgr.instance.showVideo(cb)
     }
     noCoinBtnCB() {
@@ -129,8 +136,9 @@ export default class FinishUI extends Laya.Scene {
 
                 //后台控制
                 if (WxApi.configData.give_gold_switch == true && PlayerDataMgr.getPlayerData().grade - 1 >= WxApi.configData.GXQT_kg &&
-                    (this.tempRandNum == 3 || this.tempRandNum == 4)) {
-                    this.videoCoinBtnCB()
+                    (this.tempRandNum == 3 || this.tempRandNum == 4)/*  && WxApi.showFinishWudian <= 0 */) {
+                    this.videoCoinBtnCB(true)
+                    WxApi.showFinishWudian = 2
                 }
             }
         } else {
