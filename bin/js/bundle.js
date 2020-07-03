@@ -1184,7 +1184,9 @@
                 extra: {
                     videoPath: this.videoPath,
                     videoTopics: ["我画你杀", "抖音小游戏"],
-                    createChallenge: true
+                    hashtag_list: ["我画你杀", "抖音小游戏"],
+                    createChallenge: true,
+                    withVideoId: true
                 },
                 success: () => {
                     console.log("分享成功");
@@ -2222,11 +2224,6 @@
             this.gradeIndex = 0;
             this.tempPlayerCount = 0;
             this.getCoinNum = 0;
-            for (let i = 0; i < 9; i++) {
-                localStorage.setItem('weapon' + i, '1');
-            }
-            PlayerDataMgr.getPlayerData().coin = 999999;
-            PlayerDataMgr.setPlayerData();
             AdMgr.instance.initAd();
             RecorderMgr.instance.initRecorder();
             Utility.loadJson('res/config/aiConfig.json', (data) => {

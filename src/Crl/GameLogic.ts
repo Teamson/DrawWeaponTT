@@ -43,11 +43,11 @@ export default class GameLogic {
 
     constructor() {
         //localStorage.clear()
-        for (let i = 0; i < 9; i++) {
-            localStorage.setItem('weapon' + i, '1')
-        }
-        PlayerDataMgr.getPlayerData().coin = 999999
-        PlayerDataMgr.setPlayerData()
+        // for (let i = 0; i < 9; i++) {
+        //     localStorage.setItem('weapon' + i, '1')
+        // }
+        // PlayerDataMgr.getPlayerData().coin = 999999
+        // PlayerDataMgr.setPlayerData()
         //初始化广告
         AdMgr.instance.initAd()
         //初始化录屏

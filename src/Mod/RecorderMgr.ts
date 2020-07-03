@@ -74,7 +74,9 @@ export default class RecorderMgr {
             extra: {
                 videoPath: this.videoPath,
                 videoTopics: ["我画你杀", "抖音小游戏"],
-                createChallenge: true
+                hashtag_list: ["我画你杀", "抖音小游戏"],
+                createChallenge: true,
+                withVideoId: true
             },
             success: () => {
                 console.log("分享成功");
